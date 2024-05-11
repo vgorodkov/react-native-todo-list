@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native';
-
 import { spacing } from '@/constants/spacing';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   inputContainer: {
@@ -8,7 +7,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     height: 48,
     paddingHorizontal: spacing.m,
-    marginHorizontal: spacing.l,
     borderRadius: 12,
     gap: spacing.s,
     backgroundColor: 'white',
@@ -19,11 +17,11 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
   input: {
-    flex: 1,
+    width: '100%',
     color: 'black',
     fontSize: 16,
   },
-  searchIcon: {
+  icon: {
     width: 24,
     height: 24,
   },
