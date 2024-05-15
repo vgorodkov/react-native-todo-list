@@ -1,9 +1,11 @@
 import { View } from 'react-native';
+
+import { TodoSubtask } from '@/types/todo';
+
 import { Checkbox } from '../UI/CheckBox';
 import { Text } from '../UI/Text';
 import { TextVariant } from '../UI/Text/types';
 import { styles } from './styles';
-import { TodoSubtask } from '@/types/todo';
 
 export const Subtask = ({ title, isDone }: TodoSubtask) => {
   const onCheckboxPress = () => {};

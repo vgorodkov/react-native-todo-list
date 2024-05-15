@@ -1,11 +1,12 @@
 import React from 'react';
-
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
-import { StyleSheet, View, useWindowDimensions } from 'react-native';
-import { todos } from '@/data/todos';
-import { TodoList } from '@/components/TodoList';
+
 import { DoneTaskListHeader } from '@/components/DoneTaskListHeader';
 import { TaskAddButton } from '@/components/TaskAddButton';
+import { TodoList } from '@/components/TodoList';
+import { todos } from '@/data/todos';
+
 import { styles } from './styles';
 
 export const TodosScreen = () => {

@@ -1,5 +1,6 @@
-import { Text } from '../UI/Text';
 import { Image, Pressable } from 'react-native';
+
+import { Text } from '../UI/Text';
 import { styles } from './styles';
 
 export const DoneTaskListHeader = ({ onPress }: { onPress: () => void }) => {

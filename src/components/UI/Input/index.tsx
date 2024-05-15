@@ -1,10 +1,12 @@
-import { Image, TextInput, View } from 'react-native';
 import React from 'react';
-import { styles } from './styles';
-import { Text } from '../Text';
-import { spacing } from '@/constants/spacing';
-import { TextVariant } from '../Text/types';
+import { Image, TextInput, View } from 'react-native';
+
 import { colors } from '@/constants/colors';
+import { spacing } from '@/constants/spacing';
+
+import { Text } from '../Text';
+import { TextVariant } from '../Text/types';
+import { styles } from './styles';
 import { InputProps } from './types';
 
 export const Input = ({ icon, label, ...props }: InputProps) => {

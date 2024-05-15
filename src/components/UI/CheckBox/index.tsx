@@ -1,12 +1,13 @@
-import { Image, Pressable } from 'react-native';
 import React from 'react';
-import { styles } from './styles';
+import { Image, Pressable } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSequence,
   withSpring,
 } from 'react-native-reanimated';
+
+import { styles } from './styles';
 import { CheckBoxProps } from './types';
 
 export const Checkbox = ({ isDone, onPress }: CheckBoxProps) => {

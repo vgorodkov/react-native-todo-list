@@ -1,4 +1,5 @@
 import { TextStyle } from 'react-native';
+
 import { TextVariant } from './types';
 
 export const textStyles: Record<TextVariant, TextStyle | TextStyle[]> = {

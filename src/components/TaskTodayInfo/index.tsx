@@ -1,8 +1,10 @@
-import { View } from 'react-native';
 import React from 'react';
+import { View } from 'react-native';
+
 import { Text } from '@/components/UI';
 import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
+
 import { styles } from './styles';
 
 export const TaskTodayInfo = () => {

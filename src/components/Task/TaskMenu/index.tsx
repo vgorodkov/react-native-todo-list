@@ -1,7 +1,8 @@
-import { Pressable, Text } from 'react-native';
 import React from 'react';
-import { styles } from './styles';
+import { Pressable, Text } from 'react-native';
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated';
+
+import { styles } from './styles';
 
 export const TaskMenu = () => {
   return (

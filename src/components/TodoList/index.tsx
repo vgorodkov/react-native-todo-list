@@ -1,6 +1,8 @@
-import { TodoTask } from '@/types/todo';
 import React from 'react';
 import Animated, { LinearTransition } from 'react-native-reanimated';
+
+import { TodoTask } from '@/types/todo';
+
 import { Task } from '../Task';
 import { styles } from './styles';
 import { TodoListProps } from './types';

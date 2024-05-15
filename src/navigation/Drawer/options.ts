@@ -1,8 +1,10 @@
+import { DrawerNavigationOptions } from '@react-navigation/drawer';
+
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
-import { DrawerNavigationOptions } from '@react-navigation/drawer';
-import { renderDrawerIcon } from './utils';
 import { DrawerHeaderRight } from '@/navigation/Drawer/DrawerHeaderRight';
+
+import { renderDrawerIcon } from './utils';
 
 export const drawerNavigatorOptions: DrawerNavigationOptions = {
   headerStyle: {

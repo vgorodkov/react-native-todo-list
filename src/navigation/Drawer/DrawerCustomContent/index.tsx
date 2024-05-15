@@ -4,6 +4,7 @@ import {
   DrawerItem,
   DrawerItemList,
 } from '@react-navigation/drawer';
+
 import { DrawerCloseIcon } from '../DrawerCloseIcon';
 
 export const DrawerCustomContent = (props: DrawerContentComponentProps) => {

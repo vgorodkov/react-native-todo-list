@@ -1,4 +1,5 @@
 import { Image, Pressable } from 'react-native';
+
 import { styles } from './styles';
 
 export const TaskAddCategoryCard = ({ onPress }: { onPress: () => void }) => {

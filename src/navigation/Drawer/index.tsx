@@ -1,12 +1,14 @@
-import { MainScreen } from '@/screens/Main';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import { MainScreen } from '@/screens/Main';
+import { TodosScreen } from '@/screens/Todos';
+
+import { DrawerCustomContent } from './DrawerCustomContent';
 import {
   drawerGroupScreenOptions,
   drawerMainScreenOptions,
   drawerNavigatorOptions,
 } from './options';
-import { DrawerCustomContent } from './DrawerCustomContent';
-import { TodosScreen } from '@/screens/Todos';
 
 const Drawer = createDrawerNavigator();
 

@@ -1,6 +1,7 @@
-import { Modal as RNModal, Pressable, View } from 'react-native';
-import { styles } from './styles';
 import { ReactNode } from 'react';
+import { Modal as RNModal, Pressable, View } from 'react-native';
+
+import { styles } from './styles';
 
 export const Modal = ({
   isModalVisible,

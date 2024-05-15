@@ -1,6 +1,6 @@
 import { Text } from '@/components/UI';
-import { colors } from '@/constants/colors';
 import { TextVariant } from '@/components/UI/Text/types';
+import { colors } from '@/constants/colors';
 
 export const DrawerHeaderRight = () => {
   return (

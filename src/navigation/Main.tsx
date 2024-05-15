@@ -1,7 +1,9 @@
-import { OnboardingScreen } from '@/screens/Onboarding';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { DrawerNavigation } from './Drawer';
+
+import { OnboardingScreen } from '@/screens/Onboarding';
 import { MainStackParamList } from '@/types/navigation';
+
+import { DrawerNavigation } from './Drawer';
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
 

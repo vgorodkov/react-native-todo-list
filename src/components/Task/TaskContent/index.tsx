@@ -1,11 +1,13 @@
-import { Image, Pressable, View } from 'react-native';
 import React, { useState } from 'react';
+import { Image, Pressable, View } from 'react-native';
+
 import { Text } from '@/components/UI';
-import { TextVariant } from '@/components/UI/Text/types';
 import { Checkbox } from '@/components/UI/CheckBox';
+import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
-import { styles } from './styles';
+
 import { TaskMenu } from '../TaskMenu';
+import { styles } from './styles';
 import { TaskContentProps } from './types';
 
 export const TaskContent = ({ title, description, isDone, onTaskPress }: TaskContentProps) => {

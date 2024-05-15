@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { styles } from './styles';
-import { Subtask } from '../Subtask';
 import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
+
 import { TodoTask } from '@/types/todo';
+
+import { Subtask } from '../Subtask';
+import { styles } from './styles';
 import { TaskContent } from './TaskContent';
 
 export const Task = ({ title, description, isDone, subtasks }: TodoTask) => {

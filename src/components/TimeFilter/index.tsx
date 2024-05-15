@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 
-import { TextVariant } from '@/components/UI/Text/types';
 import { Text } from '@/components/UI';
+import { TextVariant } from '@/components/UI/Text/types';
 
 import { styles } from './styles';
 import { TimeFilterProps } from './types';
