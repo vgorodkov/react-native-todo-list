@@ -1,79 +1,74 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Tестовое задание Todo list
 
-# Getting Started
+## Содержание
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+- [Техническое задание](#Техническое-задание)
+- [Используемые технологии](#Используемые-технологии)
+- [Полезные ссылки](#Полезные-ссылки)
 
-## Step 1: Start the Metro Server
+## Техническое задание
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Необходимо реализовать React-native приложение “Modsen todo list”. Приложение должно предоставлять возможность создания и удаления задачи, а также просмотра списка всех задачи.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+#### Необходимый функционал:
 
-```bash
-# using npm
-npm start
+- Возможность создания задачи с использованием инпутов.
+- Удаление, добавление подзадач и редактирования задачи при нажатии на кнопку рядом с ней.
+- Просмотр задач.
+- Сохранение задач в памяти телефона.
 
-# OR using Yarn
-yarn start
-```
+#### Дополнительный функционал
 
-## Step 2: Start your Application
+- Отправка push нотификаций о начале задачи с кратким описанием начавшейся задачи
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+#### Пример графического представления:
 
-### For Android
+[Макет](https://www.figma.com/file/V831bDvaOptg56qUSmMz72/Modsen-todo-list-App?node-id=0%3A1)
 
-```bash
-# using npm
-npm run android
+### Описание дизайна
 
-# OR using Yarn
-yarn android
-```
+1. [Стартовый экран](https://www.figma.com/file/V831bDvaOptg56qUSmMz72/Modsen-todo-list-App?node-id=22%3A2). Данный экран содержит в себе базовую информацию об приложении и кнопку которая переводит пользователя на главный экран
+2. [Главный экран](https://www.figma.com/file/V831bDvaOptg56qUSmMz72/Modsen-todo-list-App?node-id=194%3A985). Данный экран содержит в себе напоминание сколько задач предстоит сделать пользователю за сегодня. Также присутсвует строка поиска, в которой пользователь вводит название задачи и если она существует производит переход к списку задач у которых совпадает название. На экране присутсвует 3 кнопки "Today", "Week", "Month" при нажатии на которые счетчик задач на главном экране подстраивается под количетсво задач подходящих под фильтр, а также все остальное взаимодействие приложение работает на основе выбранного фильтра, т.е если пользователь выбрал фильтр только по сегодняшним задачам, то во всех категориях будут отображаться только сегодняшние задачи, если выбран фильтр "month", то только задачи которые назначены до конца текущего месяца. Так же на экране присутвует блок с категориями, который можно расширять добавив свои категории (базово должны присутвовать категории которые описаны на дизайне). На данном экране пристувует Drawer меню в котором можно перейти на экран со всеми задачами запланированнными на сегодня не зависимо от категории, список выполненых задач также не зависимо от категорий и задач помеченных как важные.
+3. [Экран со списком задач](https://www.figma.com/file/V831bDvaOptg56qUSmMz72/Modsen-todo-list-App?node-id=257%3A430) Данный экран представляет собой список задач. Взаимодействие по изменению задач, добавлению подзадач и удалению вынесен в модальное окно доступ к которому можно получить нажав на иконку. При нажатии на задачу блок расширяется и показывает подзадачи которые прикреплены (данный функционал доступен для блока только если у него есть подзадачи). Чтобы пометить задачу как выполненую пользователю необходимо изменить состояние чекбокса задачи, либо всех подзадач (если у задачи есть подзадачи, то после пометки ее как выполненой все подзадачи становятся автоматически выполнеными). Под списком задач присутсвует расширяемый блок который содержит все выполненые задачи. В этом списке задачи можно только удалить или пометить как не выполненые. При измении статуса задачи она перемещается между блоками. Для облегчения дизайна если пользователь решит открыть список выполненых задач список невыполненых должен скрываться. При нажатии на иконку + открывается модельное окно для создания задачи, которые делятся по шагам: 1) Заполнение базовой информации о задаче: название, описание. Все поля обязательные и должны быть провалидированы. Дизайн остается на усмотрение выполняющего, но не должен выбиваться из основного дизайна приложения. 2) Добавление подзадач. В этом блоке можно выбрать подзадачу которая была создана ранее для любой другой задачи или создать собственную при нажатии на +. Подзадача состоит только из ее название. Одновременно может быть открыто только 1 текстовое поле в которое можно ввести имя подзадачи. Текстовое поле для описание подзадачи можно оставить пустым, в таком случае подзадача не будет создана. В данном пункте можно задачи не выбирать. [Дизайн](https://www.figma.com/file/V831bDvaOptg56qUSmMz72/Modsen-todo-list-App?node-id=373%3A706) 3) Выбор даты для задачи. Данный пункт является исключением и в нем для упращения можно использовать стороннюю библиотеку календаря. Рекомендуется использование данной [библиотеки](https://github.com/henninghall/react-native-date-picker) в режиме **date**. Данная модалка представляет из себя поле которое изначально содержит текущую дату, при нажатии на поле открывается модалка с календарем и после выбора даты она автоматически закрывается и изменяет состояние в поле с датой. Дизайн остается на усмотрение выполняющего, но не должен выбиваться из основного дизайна приложения. 4) Выбор времени начала и времени окончания задачи. Данный пункт также является исключеним и допускает использование сторонней библиотеки для выбора времени. Рекомендуется использование библиотеки из предыдущего пункта в режиме **time**. [Дизайн](https://www.figma.com/file/V831bDvaOptg56qUSmMz72/Modsen-todo-list-App?node-id=373%3A862)
+   После подтверждения добавления модальное окно должно закрываться и новая задача должна появится в списке сразу же. Функционал редактирования задачи идентичный добавлению и изменения должны применяться сразу же. Название в header должно соответсвовать выбранному фильтру.
 
-### For iOS
+#### Также проект предполагает:
 
-```bash
-# using npm
-npm run ios
+- Организацию файловой структуры описанной в [style guide](https://docs.google.com/document/d/1bRFwwCk_eG7dWAhFss3KHHl-qQGiYK_u43GGQBxMN0k/edit).
+- Обработку ошибок через паттерн _"Error Boundaries"_.
+- Использование алиасов для импортирования файлов.
+- Реализация должна быть выполнена без использования UI библиотек на подобии react-native-elements, исключением может являться использование компонент для отрисовки svg иконок и react-native-date-picker в случаях описаных выше.
+- обязательная валидация всех текстовых полей с использованием _yup_
 
-# OR using Yarn
-yarn ios
-```
+## Используемые технологии
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+- **_Node.js_** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код).
+- **_Babel_** - транспайлер, преобразующий код из одного стандарта в другой.
+- **_Metro Bundler_** - сборщик для RN проектов.
+- **_yarn_** - менеджер пакетов.
+- **_react-native_** - JavaScript-фреймворк для создания нативных мобильных приложений.
+- **_react-native-date-picker_** - библиотека реализующая компоненту выбора даты и времени.
+- **_react-navigation_** - библиотека реализующая навигацию приложения.
+- **_react-native-push-notification_** - библиотека для работы с push-нотификациями. В рамках доп задания используются локальные нотификации.
+- **_async-storage_** - библиотека позваляющая сохранять данные приложения в памяти устройства.
+- **_yup_** - библиотека для валидации форм
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Полезные ссылки
 
-## Step 3: Modifying your App
+[React](https://reactjs.org/docs/getting-started.html)
 
-Now that you have successfully run the app, let's modify it.
+[React hooks](https://reactjs.org/docs/hooks-intro.html)
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+[React redux](https://react-redux.js.org/introduction/quick-start)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+[yup](https://github.com/jquense/yup)
 
-## Congratulations! :tada:
+[react-native-date-picker](https://github.com/react-native-async-storage/async-storage](https://github.com/henninghall/react-native-date-picker)
 
-You've successfully run and modified your React Native App. :partying_face:
+[react-navigation](https://reactnavigation.org/)
 
-### Now what?
+[react-native-push-notification](https://github.com/react-native-async-storage/async-storage](https://github.com/zo0r/react-native-push-notification)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+[async-storage](https://github.com/react-native-async-storage/async-storage)
 
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+[Commits convetional](https://www.conventionalcommits.org/en/v1.0.0/#specification)
