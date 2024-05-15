@@ -1,10 +1,10 @@
-import { Text } from '@/components/Text';
-import { TextVariant } from '@/components/Text/types';
+import { Text } from '@/components/UI';
+import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
 import { View, Image } from 'react-native';
 import { styles } from './styles';
 import { APP_DESCRIPTION, APP_TITLE, BTN_TEXT } from './constants';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/UI/Button';
 import { OnboardingScreenProps } from './types';
 
 export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
