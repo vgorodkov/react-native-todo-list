@@ -1,21 +1,27 @@
 import 'react-native-gesture-handler';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { MainNavigation } from '@/navigation/Main';
-import { Platform, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { colors } from '@/constants/colors';
 import { useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 
+const customTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'white',
+  },
+};
+
 const App = () => {
   useEffect(() => {
-    if (Platform.OS === 'android') {
-      SplashScreen.hide();
-    }
+    SplashScreen.hide();
   }, []);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={customTheme}>
       <StatusBar backgroundColor={colors.primary} />
       <MainNavigation />
     </NavigationContainer>
