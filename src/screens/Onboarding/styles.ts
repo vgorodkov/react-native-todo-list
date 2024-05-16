@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
   },
   welcomeImg: {
     height: 400,
+    resizeMode: 'contain',
   },
   appInfo: {
     justifyContent: 'center',
