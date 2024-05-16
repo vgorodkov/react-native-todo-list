@@ -7,5 +7,6 @@ export const styles = StyleSheet.create({
     paddingVertical: spacing.l,
     paddingHorizontal: spacing.m,
     gap: spacing.m,
+    flexGrow: 1,
   },
 });
