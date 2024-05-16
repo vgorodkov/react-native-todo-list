@@ -12,3 +12,9 @@ export interface TodoTask {
   isImportant: boolean;
   subtasks?: TodoSubtask[];
 }
+
+export interface TodoTaskCategory {
+  title: string;
+  img: number;
+  backgroundColor: string;
+}
