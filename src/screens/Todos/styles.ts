@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   doneTodosContainer: {
-    flex: 1,
     backgroundColor: 'white',
   },
 
