@@ -19,7 +19,7 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
         {1}
       </Text>
       <Image style={styles.taskCategoryImg} source={img} />
-      <Text variant={TextVariant.label_large} color={'white'}>
+      <Text style={styles.taskText} variant={TextVariant.label_large} color="white">
         {title}
       </Text>
     </View>

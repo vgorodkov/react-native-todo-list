@@ -21,4 +21,8 @@ export const styles = StyleSheet.create({
     width: 32,
     height: 32,
   },
+  taskText: {
+    textAlign: 'center',
+    maxWidth: '90%',
+  },
 });
