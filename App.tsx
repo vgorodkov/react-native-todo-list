@@ -1,11 +1,15 @@
 import 'react-native-gesture-handler';
 
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import { MainNavigation } from '@/navigation/Main';
-import { StatusBar } from 'react-native';
-import { colors } from '@/constants/colors';
 import { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import { Provider } from 'react-redux';
+
+import { TodosPersistor } from '@/components/TodosPersistor';
+import { colors } from '@/constants/colors';
+import { MainNavigation } from '@/navigation/Main';
+import { store } from '@/store';
 
 const customTheme = {
   ...DefaultTheme,
@@ -21,10 +25,14 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer theme={customTheme}>
-      <StatusBar backgroundColor={colors.primary} />
-      <MainNavigation />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer theme={customTheme}>
+        <StatusBar backgroundColor={colors.primary} />
+        <TodosPersistor>
+          <MainNavigation />
+        </TodosPersistor>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
