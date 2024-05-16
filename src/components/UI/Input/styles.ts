@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     height: 48,
     paddingHorizontal: spacing.m,
-    borderRadius: 12,
+    borderRadius: 4,
     gap: spacing.s,
     backgroundColor: 'white',
     shadowColor: '#000',

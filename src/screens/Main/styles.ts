@@ -1,12 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { spacing } from '@/constants/spacing';
+
 export const styles = StyleSheet.create({
-  timeFiltersContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-  },
-  categoriesContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: { paddingVertical: spacing.l, paddingHorizontal: spacing.m, gap: spacing.m, flex: 1 },
 });
