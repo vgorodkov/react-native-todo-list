@@ -5,11 +5,11 @@ import { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { TodosPersistor } from '@/components/TodosPersistor';
 import { colors } from '@/constants/colors';
 import { MainNavigation } from '@/navigation/Main';
-import { store } from '@/store';
+import { persistor, store } from '@/store';
 
 const customTheme = {
   ...DefaultTheme,
@@ -26,12 +26,12 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <NavigationContainer theme={customTheme}>
-        <StatusBar backgroundColor={colors.primary} />
-        <TodosPersistor>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer theme={customTheme}>
+          <StatusBar backgroundColor={colors.primary} />
           <MainNavigation />
-        </TodosPersistor>
-      </NavigationContainer>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 };
