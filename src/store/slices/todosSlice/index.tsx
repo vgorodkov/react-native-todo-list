@@ -1,9 +1,7 @@
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TodoTask } from '@/types/todo';
-
-import { loadTodos } from './todosThunk';
+import { TodoTask, TodoTaskDTO } from '@/types/todo';
 
 export interface TodoState {
   todos: TodoTask[];
@@ -21,6 +19,24 @@ export const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
+    setTodos: (state, action: PayloadAction<TodoTask[]>) => {
+      state.todos = action.payload;
+    },
+    addTodo: (state, action: PayloadAction<TodoTaskDTO>) => {
+      const newTodo: TodoTask = {
+        ...action.payload,
+        id: nanoid(),
+      };
+      state.todos.push(newTodo);
+    },
+    editTodo: (state, action: PayloadAction<{ taskId: string; editedTask: TodoTaskDTO }>) => {
+      const { taskId, editedTask } = action.payload;
+      const taskIndex = state.todos.findIndex((todo) => todo.id === taskId);
+      state.todos[taskIndex] = {
+        ...editedTask,
+        id: taskId,
+      };
+    },
     deleteTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
@@ -55,23 +71,8 @@ export const todoSlice = createSlice({
       }
     },
   },
-  extraReducers(builder) {
-    builder
-      .addCase(loadTodos.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(loadTodos.fulfilled, (state, action) => {
-        const todosFromAsyncStorage = action.payload;
-        state.todos = todosFromAsyncStorage;
-        state.isLoading = false;
-      })
-      .addCase(loadTodos.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
-      });
-  },
 });
 
-export const { deleteTodo, toggleTaskIsDone, toggleSubtaskIsDone } = todoSlice.actions;
+export const { deleteTodo, toggleTaskIsDone, toggleSubtaskIsDone, setTodos } = todoSlice.actions;
 
 export default todoSlice.reducer;

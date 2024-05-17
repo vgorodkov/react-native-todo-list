@@ -13,6 +13,8 @@ export interface TodoTask {
   subtasks?: TodoSubtask[];
 }
 
+export interface TodoTaskDTO extends Omit<TodoTask, 'id'> {}
+
 export interface TodoTaskCategory {
   title: string;
   img: number;
