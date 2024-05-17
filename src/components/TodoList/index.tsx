@@ -1,31 +1,16 @@
 import React from 'react';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import { TodoTask } from '@/types/todo';
+import { Text } from '@/components/UI';
 
-import { Task } from '../Task';
+import { renderTodos } from './renderTodos';
 import { styles } from './styles';
 import { TodoListProps } from './types';
-
-const renderTodos = ({ item }: { item: TodoTask }) => {
-  const { id, title, description, isDone, isImportant, category, toDateTimestamp, subtasks } = item;
-  return (
-    <Task
-      id={id}
-      title={title}
-      description={description}
-      isDone={isDone}
-      isImportant={isImportant}
-      category={category}
-      toDateTimestamp={toDateTimestamp}
-      subtasks={subtasks}
-    />
-  );
-};
 
 export const TodoList = ({ todos }: TodoListProps) => {
   return (
     <Animated.FlatList
+      ListEmptyComponent={<Text>No todos yet</Text>}
       showsVerticalScrollIndicator={false}
       data={todos}
       itemLayoutAnimation={LinearTransition}

@@ -6,14 +6,17 @@ import { DoneTaskListHeader } from '@/components/DoneTaskListHeader';
 import { TaskAddButton } from '@/components/TaskAddButton';
 import { TodoList } from '@/components/TodoList';
 import { useAppSelector } from '@/store/hooks';
-import { selectDoneTodos, selectUndoneTodos } from '@/store/slices/todosSlice/selectors';
+import { selectTodosByCategory } from '@/store/slices/todosSlice/selectors';
 
 import { styles } from './styles';
 
-export const TodosScreen = () => {
+//TODO: type navigation route params
+export const CategoryTodosScreen = ({ route }: any) => {
+  const { category } = route.params;
   const { height } = useWindowDimensions();
-  const undoneTodos = useAppSelector((state) => selectUndoneTodos(state));
-  const doneTodos = useAppSelector((state) => selectDoneTodos(state));
+  const categoryTodos = useAppSelector((state) => selectTodosByCategory(state, category));
+  const doneTodos = categoryTodos.filter((t) => t.isDone);
+  const undoneTodos = categoryTodos.filter((t) => !t.isDone);
 
   const BOTTOM_EDGE = height * 0.8 - 72;
   const TOP_EDGE = 0;
