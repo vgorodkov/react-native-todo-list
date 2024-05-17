@@ -19,3 +19,22 @@ export const selectImportantTodos = createSelector(
     return todos.filter((todo) => !todo.isImportant);
   }
 );
+
+export const selectDailyTodos = createSelector([(state: RootState) => state.todo], ({ todos }) => {
+  return todos.filter((todo) => todo.toDateTimestamp);
+});
+
+export const selectTodosByCategory = createSelector(
+  [(state: RootState) => state.todo, (state: RootState, category: string) => category],
+  ({ todos }, category) => {
+    return todos.filter((t) => t.category === category);
+  }
+);
+
+export const selectTodosLengthByCategory = createSelector(
+  [(state: RootState) => state.todo, (state: RootState, category: string) => category],
+  ({ todos }, category) => {
+    const filteredTodos = todos.filter((t) => t.category === category);
+    return filteredTodos.length;
+  }
+);
