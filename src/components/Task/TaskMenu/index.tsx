@@ -2,26 +2,30 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { useAppDispatch } from '@/store/hooks';
-import { deleteTodo } from '@/store/slices/todosSlice';
+import { deleteTask } from '@/store/slices/taskSlice';
 
 import { styles } from './styles';
 
-export const TaskMenu = ({ id }: { id: string }) => {
+export const TaskMenu = ({ id, isDone }: { id: string; isDone: boolean }) => {
   const dispatch = useAppDispatch();
 
-  const deleteTask = () => {
-    dispatch(deleteTodo(id));
+  const onDeleteTaskBtn = () => {
+    dispatch(deleteTask(id));
   };
 
   return (
     <View style={styles.taskMenu}>
-      <Pressable>
-        <Text>add subtasks</Text>
-      </Pressable>
-      <Pressable>
-        <Text>edit task</Text>
-      </Pressable>
-      <Pressable onPress={deleteTask}>
+      {!isDone && (
+        <>
+          <Pressable>
+            <Text>add subtasks</Text>
+          </Pressable>
+          <Pressable>
+            <Text>edit task</Text>
+          </Pressable>
+        </>
+      )}
+      <Pressable onPress={onDeleteTaskBtn}>
         <Text>delete task</Text>
       </Pressable>
     </View>
