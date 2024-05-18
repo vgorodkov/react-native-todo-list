@@ -6,17 +6,17 @@ import { Text } from '@/components/UI';
 import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
 import { useAppSelector } from '@/store/hooks';
-import { selectTodosLengthByCategory } from '@/store/slices/todosSlice/selectors';
+import { selectTasksLengthByCategory } from '@/store/slices/taskSlice/selectors';
 
 import { styles } from './styles';
 import { TaskCategoryProps } from './types';
 
 export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryProps) => {
   const navigation = useNavigation();
-  const todosLength = useAppSelector((state) => selectTodosLengthByCategory(state, title));
+  const tasksLength = useAppSelector((state) => selectTasksLengthByCategory(state, title));
 
   const onTaskCategoryCardPress = () => {
-    navigation.navigate('CategoryTodos', {
+    navigation.navigate('CategoryTasks', {
       category: title,
     });
   };
@@ -28,7 +28,7 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
         style={styles.taskAmountBadge}
         color={colors.onPrimary}
       >
-        {todosLength}
+        {tasksLength}
       </Text>
       <Image style={styles.taskCategoryImg} source={img} />
       <Text style={styles.taskText} variant={TextVariant.label_large} color="white">
