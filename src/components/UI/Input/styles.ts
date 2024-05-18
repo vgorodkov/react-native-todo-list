@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
   input: {
-    width: '100%',
+    flex: 1,
     color: 'black',
     fontSize: 16,
   },
