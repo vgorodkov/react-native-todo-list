@@ -1,8 +1,9 @@
 export type MainStackParamList = {
   Onboarding: undefined;
   Drawer: undefined;
-  CategoryTodos: {
+  CategoryTasks: {
     category: string;
   };
   AddCategoryModal: undefined;
+  TaskModal: undefined;
 };
