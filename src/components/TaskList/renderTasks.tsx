@@ -1,8 +1,18 @@
 import { Task } from '@/components/Task';
 import { TodoTask } from '@/types/todo';
 
-export const renderTodos = ({ item }: { item: TodoTask }) => {
-  const { id, title, description, isDone, isImportant, category, toDateTimestamp, subtasks } = item;
+export const renderTasks = ({ item }: { item: TodoTask }) => {
+  const {
+    id,
+    title,
+    description,
+    isDone,
+    isImportant,
+    category,
+    toDateTimestamp,
+    subtasks,
+    timeRange,
+  } = item;
   return (
     <Task
       id={id}
@@ -13,6 +23,7 @@ export const renderTodos = ({ item }: { item: TodoTask }) => {
       category={category}
       toDateTimestamp={toDateTimestamp}
       subtasks={subtasks}
+      timeRange={timeRange}
     />
   );
 };
