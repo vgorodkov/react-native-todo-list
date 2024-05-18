@@ -6,14 +6,19 @@ export interface TodoTask {
   description: string;
   category: string;
   toDateTimestamp: number;
-  //TODO: replace timerange
-  timeRange?: unknown;
+
+  timeRange: {
+    from: string;
+    to: string;
+  };
   isDone: boolean;
   isImportant: boolean;
-  subtasks?: TodoSubtask[];
+  subtasks: TodoSubtask[];
 }
 
 export interface TodoTaskDTO extends Omit<TodoTask, 'id'> {}
+
+export interface TodoSubtaskDTO extends Omit<TodoSubtask, 'id'> {}
 
 export interface TodoTaskCategory {
   title: string;
