@@ -1,8 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { DailyTodosScreen } from '@/screens/DailyTodos';
-import { DoneTodosScreen } from '@/screens/DoneTodos';
-import { ImportantTodosScreen } from '@/screens/ImportantTodos';
+import { DailyTasksScreen } from '@/screens/DailyTasks';
+import { DoneTasksScreen } from '@/screens/DoneTasks';
+import { ImportantTasksScreen } from '@/screens/ImportantTasks';
 import { MainScreen } from '@/screens/Main';
 
 import { DrawerCustomContent } from './DrawerCustomContent';
@@ -19,9 +19,9 @@ export const DrawerNavigation = () => {
     <Drawer.Navigator screenOptions={drawerNavigatorOptions} drawerContent={DrawerCustomContent}>
       <Drawer.Screen name="Main" component={MainScreen} options={drawerMainScreenOptions} />
       <Drawer.Group screenOptions={drawerGroupScreenOptions}>
-        <Drawer.Screen name="DailyTasks" component={DailyTodosScreen} />
-        <Drawer.Screen name="ImportantTasks" component={ImportantTodosScreen} />
-        <Drawer.Screen name="DoneTasks" component={DoneTodosScreen} />
+        <Drawer.Screen name="DailyTasks" component={DailyTasksScreen} />
+        <Drawer.Screen name="ImportantTasks" component={ImportantTasksScreen} />
+        <Drawer.Screen name="DoneTasks" component={DoneTasksScreen} />
       </Drawer.Group>
     </Drawer.Navigator>
   );
