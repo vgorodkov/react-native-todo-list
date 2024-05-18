@@ -1,40 +1,46 @@
 import React, { useState } from 'react';
-import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
+import { View } from 'react-native';
+import Animated, { LinearTransition } from 'react-native-reanimated';
 
+import { Subtask } from '@/components/Subtask';
 import { TodoTask } from '@/types/todo';
 
-import { Subtask } from '../Subtask';
 import { styles } from './styles';
 import { TaskContent } from './TaskContent';
 
-export const Task = ({ title, description, isDone, subtasks, id }: TodoTask) => {
+export const Task = ({ title, description, isDone, subtasks, timeRange, id }: TodoTask) => {
   const [isSubtasksShown, setIsSubtaskShown] = useState(false);
+
+  const hasSubtasks = subtasks.length > 0;
 
   const onTaskPress = () => {
     setIsSubtaskShown((prev) => !prev);
   };
 
   return (
-    <Animated.View layout={LinearTransition} style={styles.taskContainer}>
+    <Animated.View layout={LinearTransition} style={[styles.taskContainer]}>
       <TaskContent
         id={id}
         title={title}
         description={description}
         isDone={isDone}
         onTaskPress={onTaskPress}
+        timeRange={timeRange}
+        disabled={!hasSubtasks}
       />
       {isSubtasksShown && (
-        <Animated.View entering={FadeIn} exiting={FadeOut} style={{ gap: 16 }}>
-          {subtasks?.map((subtask) => (
+        <View style={styles.subtaskContainer}>
+          {subtasks?.map((subtask, index) => (
             <Subtask
-              key={subtask.id}
-              id={subtask.id}
+              index={index}
               taskId={id}
-              isDone={subtask.isDone}
+              key={subtask.id}
               title={subtask.title}
+              id={subtask.id}
+              isDone={subtask.isDone}
             />
           ))}
-        </Animated.View>
+        </View>
       )}
     </Animated.View>
   );

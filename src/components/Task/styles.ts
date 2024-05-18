@@ -14,4 +14,7 @@ export const styles = StyleSheet.create({
     elevation: 4,
     gap: spacing.sm,
   },
+  subtaskContainer: {
+    gap: 16,
+  },
 });

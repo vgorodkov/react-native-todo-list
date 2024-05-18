@@ -2,25 +2,31 @@ import React from 'react';
 import { useWindowDimensions, View } from 'react-native';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 
+import { AddIcon } from '@/components/AddIcon';
 import { DoneTaskListHeader } from '@/components/DoneTaskListHeader';
-import { TaskAddButton } from '@/components/TaskAddButton';
-import { TodoList } from '@/components/TodoList';
+import { TaskList } from '@/components/TaskList';
 import { useAppSelector } from '@/store/hooks';
-import { selectTodosByCategory } from '@/store/slices/todosSlice/selectors';
+import { selectTasksByCategory } from '@/store/slices/taskSlice/selectors';
 
 import { styles } from './styles';
 
 //TODO: type navigation route params
-export const CategoryTodosScreen = ({ route }: any) => {
+export const CategoryTasksScreen = ({ route, navigation }: any) => {
   const { category } = route.params;
   const { height } = useWindowDimensions();
-  const categoryTodos = useAppSelector((state) => selectTodosByCategory(state, category));
-  const doneTodos = categoryTodos.filter((t) => t.isDone);
-  const undoneTodos = categoryTodos.filter((t) => !t.isDone);
+  const categoryTasks = useAppSelector((state) => selectTasksByCategory(state, category));
+  const doneTasks = categoryTasks.filter((t) => t.isDone);
+  const undoneTasks = categoryTasks.filter((t) => !t.isDone);
 
   const BOTTOM_EDGE = height * 0.8 - 72;
   const TOP_EDGE = 0;
   const listHeight = useSharedValue(BOTTOM_EDGE);
+
+  const onAddIconPress = () => {
+    navigation.navigate('TaskModal', {
+      category,
+    });
+  };
 
   const onPress = () => {
     if (listHeight.value === BOTTOM_EDGE) {
@@ -34,13 +40,13 @@ export const CategoryTodosScreen = ({ route }: any) => {
     <>
       <View style={styles.todosContainer}>
         <Animated.View style={{ height: listHeight }}>
-          <TodoList todos={undoneTodos} />
+          <TaskList tasks={undoneTasks} />
         </Animated.View>
-        <DoneTaskListHeader onPress={onPress} />
-        <TodoList todos={doneTodos} />
+        <DoneTaskListHeader doneTasksAmount={doneTasks.length} onPress={onPress} />
+        <TaskList tasks={doneTasks} />
       </View>
       <View style={styles.addTodosContainer}>
-        <TaskAddButton />
+        <AddIcon onAddIconPress={onAddIconPress} />
       </View>
     </>
   );

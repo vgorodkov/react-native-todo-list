@@ -1,30 +1,31 @@
-import { View } from 'react-native';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
+import { Checkbox, Text } from '@/components/UI';
+import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
 import { useAppDispatch } from '@/store/hooks';
-import { toggleSubtaskIsDone } from '@/store/slices/todosSlice';
-import { TodoSubtask } from '@/types/todo';
+import { setSubtaskIsDone, setSubtaskIsUndone } from '@/store/slices/taskSlice';
 
-import { Checkbox } from '../UI/CheckBox';
-import { Text } from '../UI/Text';
-import { TextVariant } from '../UI/Text/types';
 import { styles } from './styles';
+import { SubtaskProps } from './types';
 
-interface TodoSubtaskProps extends TodoSubtask {
-  taskId: string;
-}
-
-export const Subtask = ({ title, isDone, id, taskId }: TodoSubtaskProps) => {
+export const Subtask = ({ title, isDone, id, taskId, index }: SubtaskProps) => {
   const dispatch = useAppDispatch();
+
   const onCheckboxPress = () => {
-    dispatch(toggleSubtaskIsDone({ taskId, subTaskId: id }));
+    if (isDone) {
+      dispatch(setSubtaskIsUndone({ taskId, subtaskId: id }));
+    } else {
+      dispatch(setSubtaskIsDone({ taskId, subtaskId: id }));
+    }
   };
+
   return (
-    <View style={styles.subTask}>
+    <Animated.View style={styles.subTask} entering={FadeIn.delay(150 * index)}>
       <Checkbox isDone={isDone} onPress={onCheckboxPress} />
       <Text color={colors.primaryText} variant={TextVariant.label_small}>
         {title}
       </Text>
-    </View>
+    </Animated.View>
   );
 };

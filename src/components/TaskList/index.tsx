@@ -1,20 +1,19 @@
 import React from 'react';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 
-import { Text } from '@/components/UI';
-
-import { renderTodos } from './renderTodos';
+import { EmptyList } from './EmptyList';
+import { renderTasks } from './renderTasks';
 import { styles } from './styles';
-import { TodoListProps } from './types';
+import { TaskListProps } from './types';
 
-export const TodoList = ({ todos }: TodoListProps) => {
+export const TaskList = ({ tasks }: TaskListProps) => {
   return (
     <Animated.FlatList
-      ListEmptyComponent={<Text>No todos yet</Text>}
+      ListEmptyComponent={EmptyList}
       showsVerticalScrollIndicator={false}
-      data={todos}
+      data={tasks}
       itemLayoutAnimation={LinearTransition}
-      renderItem={renderTodos}
+      renderItem={renderTasks}
       contentContainerStyle={styles.contentContainerStyle}
     />
   );

@@ -6,19 +6,32 @@ import { Checkbox } from '@/components/UI/CheckBox';
 import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
 import { useAppDispatch } from '@/store/hooks';
-import { toggleTaskIsDone } from '@/store/slices/todosSlice';
+import { setTaskIsDone, setTaskIsUndone } from '@/store/slices/taskSlice';
+import { formatTime } from '@/utils/formatTime';
 
 import { TaskMenu } from '../TaskMenu';
 import { styles } from './styles';
 import { TaskContentProps } from './types';
 
-export const TaskContent = ({ title, description, isDone, onTaskPress, id }: TaskContentProps) => {
+export const TaskContent = ({
+  title,
+  description,
+  isDone,
+  onTaskPress,
+  id,
+  timeRange,
+  disabled,
+}: TaskContentProps) => {
   const dispatch = useAppDispatch();
 
   const [isTaskMenuShown, setIsTaskMenuShown] = useState(false);
 
   const onCheckBoxPress = () => {
-    dispatch(toggleTaskIsDone(id));
+    if (isDone) {
+      dispatch(setTaskIsUndone(id));
+    } else {
+      dispatch(setTaskIsDone(id));
+    }
   };
 
   const onTaskMenuToggleBtn = () => {
@@ -26,13 +39,13 @@ export const TaskContent = ({ title, description, isDone, onTaskPress, id }: Tas
   };
 
   return (
-    <Pressable onPress={onTaskPress} style={styles.task}>
+    <Pressable disabled={disabled} onPress={onTaskPress} style={styles.task}>
       <View style={styles.timeRange}>
         <Text color={colors.primaryText} variant={TextVariant.label_small}>
-          10:00 am
+          {formatTime(timeRange.from)}
         </Text>
         <Text color={colors.primaryText} variant={TextVariant.label_small}>
-          05:00 pm
+          {formatTime(timeRange.to)}
         </Text>
       </View>
       <Checkbox isDone={isDone} onPress={onCheckBoxPress} />
@@ -44,7 +57,7 @@ export const TaskContent = ({ title, description, isDone, onTaskPress, id }: Tas
           {description}
         </Text>
       </View>
-      {isTaskMenuShown && <TaskMenu id={id} />}
+      {isTaskMenuShown && <TaskMenu isDone={isDone} id={id} />}
       <Pressable onPress={onTaskMenuToggleBtn}>
         <Image style={styles.taskMenuToggleBtn} source={require('@/assets/icons/more.png')} />
       </Pressable>
