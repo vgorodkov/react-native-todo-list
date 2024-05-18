@@ -12,17 +12,19 @@ import {
 } from 'redux-persist';
 
 import categoryReducer from './slices/categorySlice';
-import todoReducer from './slices/todosSlice';
+import taskModalReducer from './slices/taskModalSlice';
+import taskReducer from './slices/taskSlice';
 
 const rootReducer = combineReducers({
   category: categoryReducer,
-  todo: todoReducer,
+  task: taskReducer,
+  taskModal: taskModalReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['category', 'todo'],
+  whitelist: ['category', 'task'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
