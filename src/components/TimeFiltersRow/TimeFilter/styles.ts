@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
 
 export const styles = StyleSheet.create({
@@ -7,10 +8,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing.m,
     paddingVertical: spacing.xs,
     borderWidth: 1,
-    borderColor: '#646FD4',
+    borderColor: colors.primary,
     borderRadius: 14,
   },
   activeTimeFilter: {
-    backgroundColor: '#646FD4',
+    backgroundColor: colors.primary,
   },
 });

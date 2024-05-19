@@ -21,7 +21,10 @@ export const TimeFilter = ({ title, isSelected }: TimeFilterProps) => {
       onPress={onTimeFilterPress}
       style={[styles.timeFilter, isSelected && styles.activeTimeFilter]}
     >
-      <Text color={isSelected ? 'white' : colors.primaryText} variant={TextVariant.label_large}>
+      <Text
+        color={isSelected ? colors.onPrimary : colors.primaryText}
+        variant={TextVariant.label_large}
+      >
         {title}
       </Text>
     </Pressable>

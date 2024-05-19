@@ -1,4 +1,6 @@
+import { TimeFilter } from '@/types/timefilter';
+
 export interface TimeFilterProps {
-  title: string;
+  title: TimeFilter;
   isSelected: boolean;
 }

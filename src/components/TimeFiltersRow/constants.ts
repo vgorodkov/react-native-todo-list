@@ -1,1 +1,3 @@
-export const timeFilters = ['Today', 'Week', 'Month'];
+import { TimeFilter } from '@/types/timefilter';
+
+export const timeFilters: TimeFilter[] = ['Today', 'Week', 'Month'];

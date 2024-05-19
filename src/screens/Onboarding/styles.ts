@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+import { commonStyles } from '@/commonStyles';
 import { spacing } from '@/constants/spacing';
 
 export const styles = StyleSheet.create({
@@ -14,8 +15,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   appInfo: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...commonStyles.centeredView,
     gap: spacing.s,
   },
   appDescription: {
