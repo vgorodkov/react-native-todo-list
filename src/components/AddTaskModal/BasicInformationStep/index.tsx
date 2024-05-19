@@ -3,6 +3,7 @@ import React from 'react';
 import { Input } from '@/components/UI';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { handleTextInfoInput } from '@/store/slices/taskModalSlice';
+import { selectDescription, selectTitle } from '@/store/slices/taskModalSlice/selectors';
 
 import { ListItem } from '../ListItem';
 import { styles } from './styles';
@@ -10,8 +11,8 @@ import { styles } from './styles';
 export const BasicInformationStep = () => {
   const dispatch = useAppDispatch();
 
-  const title = useAppSelector((state) => state.taskModal.title);
-  const desription = useAppSelector((state) => state.taskModal.description);
+  const title = useAppSelector(selectTitle);
+  const desription = useAppSelector(selectDescription);
 
   const handleTitle = (text: string) => {
     dispatch(handleTextInfoInput({ mode: 'title', text }));

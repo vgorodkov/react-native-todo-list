@@ -4,6 +4,7 @@ import { ScrollView, View } from 'react-native';
 
 import { Button } from '@/components/UI';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { selectTaskDTO } from '@/store/slices/taskModalSlice/selectors';
 import { addTask } from '@/store/slices/taskSlice';
 
 import { styles } from './styles';
@@ -14,7 +15,7 @@ const ITEMS_AMOUNT = 4;
 export const ControlBtns = ({ scrollViewRef }: { scrollViewRef: RefObject<ScrollView> }) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
-  const taskDTO = useAppSelector((state) => state.taskModal);
+  const taskDTO = useAppSelector(selectTaskDTO);
   const [scrollViewIndex, setScrollViewIndex] = useState(0);
 
   const onNextBtnPress = () => {

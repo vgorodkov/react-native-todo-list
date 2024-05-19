@@ -5,6 +5,6 @@ import { useAppSelector } from '@/store/hooks';
 import { selectDailyTasks } from '@/store/slices/taskSlice/selectors';
 
 export const DailyTasksScreen = () => {
-  const dailyTasks = useAppSelector((state) => selectDailyTasks(state));
+  const dailyTasks = useAppSelector(selectDailyTasks);
   return <TaskList tasks={dailyTasks} />;
 };

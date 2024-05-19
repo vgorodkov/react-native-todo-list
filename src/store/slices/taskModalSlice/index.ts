@@ -5,18 +5,24 @@ import { TodoSubtask, TodoTask, TodoTaskDTO } from '@/types/todo';
 
 import { addTask } from '../taskSlice';
 
-const initialState: TodoTaskDTO = {
-  title: '',
-  description: '',
-  category: '',
-  toDateTimestamp: Date.now(),
-  timeRange: {
-    from: new Date().toISOString(),
-    to: new Date().toISOString(),
+interface TaskModalState {
+  taskDTO: TodoTaskDTO;
+}
+
+const initialState: TaskModalState = {
+  taskDTO: {
+    title: '',
+    description: '',
+    category: '',
+    toDateTimestamp: Date.now(),
+    timeRange: {
+      from: new Date().toISOString(),
+      to: new Date().toISOString(),
+    },
+    isDone: false,
+    isImportant: false,
+    subtasks: [],
   },
-  isDone: false,
-  isImportant: false,
-  subtasks: [],
 };
 
 export const taskModalSlice = createSlice({
@@ -24,30 +30,30 @@ export const taskModalSlice = createSlice({
   initialState,
   reducers: {
     setInitialTaskState: (state, action: PayloadAction<TodoTask>) => {
-      state = action.payload;
+      state.taskDTO = action.payload;
     },
     setCategory: (state, action: PayloadAction<string>) => {
-      state.category = action.payload;
+      state.taskDTO.category = action.payload;
     },
     handleTextInfoInput: (
       state,
       action: PayloadAction<{ mode: 'title' | 'description'; text: string }>
     ) => {
       const { mode, text } = action.payload;
-      state[mode] = text;
+      state.taskDTO[mode] = text;
     },
     handleDateSelection: (state, action: PayloadAction<number>) => {
-      state.toDateTimestamp = action.payload;
+      state.taskDTO.toDateTimestamp = action.payload;
     },
     handleTimeRangeSelection: (
       state,
       action: PayloadAction<{ mode: 'from' | 'to'; value: string }>
     ) => {
       const { mode, value } = action.payload;
-      state.timeRange[mode] = value;
+      state.taskDTO.timeRange[mode] = value;
     },
     toggleTaskModalIsImportant: (state) => {
-      state.isImportant = !state.isImportant;
+      state.taskDTO.isImportant = !state.taskDTO.isImportant;
     },
     addSubtask: (state, action: PayloadAction<string>) => {
       const newSubtask: TodoSubtask = {
@@ -55,11 +61,11 @@ export const taskModalSlice = createSlice({
         isDone: false,
         title: action.payload,
       };
-      state.subtasks.push(newSubtask);
+      state.taskDTO.subtasks.push(newSubtask);
     },
     deleteSubtask: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      state.subtasks = state.subtasks.filter((subtask) => subtask.id !== id);
+      state.taskDTO.subtasks = state.taskDTO.subtasks.filter((subtask) => subtask.id !== id);
     },
   },
   extraReducers(builder) {

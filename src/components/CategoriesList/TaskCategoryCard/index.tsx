@@ -14,7 +14,6 @@ import { TaskCategoryProps } from './types';
 export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryProps) => {
   const navigation = useNavigation();
   const tasksLength = useAppSelector((state) => selectTasksLengthByCategory(state, title));
-
   const onTaskCategoryCardPress = () => {
     navigation.navigate('CategoryTasks', {
       category: title,

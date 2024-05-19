@@ -5,6 +5,7 @@ import { AddIcon } from '@/components/AddIcon';
 import { Input, Text } from '@/components/UI';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addSubtask } from '@/store/slices/taskModalSlice';
+import { selectSubtasks } from '@/store/slices/taskModalSlice/selectors';
 
 import { ListItem } from '../ListItem';
 import { renderSelectedSubtasks } from './renderSubtasks';
@@ -15,7 +16,7 @@ export const SubtasksStep = () => {
 
   const dispatch = useAppDispatch();
 
-  const selectedSubtasks = useAppSelector((state) => state.taskModal.subtasks);
+  const selectedSubtasks = useAppSelector(selectSubtasks);
 
   const handleSubtaskAdd = () => {
     dispatch(addSubtask(subtaskInputValue));

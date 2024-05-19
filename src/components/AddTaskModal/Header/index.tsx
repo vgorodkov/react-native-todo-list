@@ -5,12 +5,13 @@ import { Text } from '@/components/UI';
 import { TextVariant } from '@/components/UI/Text/types';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { toggleTaskModalIsImportant } from '@/store/slices/taskModalSlice';
+import { selectIsImportant } from '@/store/slices/taskModalSlice/selectors';
 
 import { styles } from './styles';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
-  const isImportant = useAppSelector((state) => state.taskModal.isImportant);
+  const isImportant = useAppSelector(selectIsImportant);
 
   const onIsImportantIconPress = () => {
     dispatch(toggleTaskModalIsImportant());
