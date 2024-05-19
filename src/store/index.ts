@@ -14,17 +14,19 @@ import {
 import categoryReducer from './slices/categorySlice';
 import taskModalReducer from './slices/taskModalSlice';
 import taskReducer from './slices/taskSlice';
+import timeFilterReducer from './slices/timeFilterSlice';
 
 const rootReducer = combineReducers({
   category: categoryReducer,
   task: taskReducer,
   taskModal: taskModalReducer,
+  timeFilter: timeFilterReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['category', 'task'],
+  whitelist: ['category', 'task', 'timeFilter'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
