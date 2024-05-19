@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+import { commonStyles } from '@/commonStyles';
 import { spacing } from '@/constants/spacing';
 
 export const styles = StyleSheet.create({
@@ -8,8 +9,7 @@ export const styles = StyleSheet.create({
     width: 104,
     margin: spacing.s,
     borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
+    ...commonStyles.centeredView,
     gap: spacing.s,
   },
   taskAmountBadge: {

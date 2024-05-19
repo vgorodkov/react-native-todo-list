@@ -13,7 +13,9 @@ import { TaskCategoryProps } from './types';
 
 export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryProps) => {
   const navigation = useNavigation();
+
   const tasksLength = useAppSelector((state) => selectTasksLengthByCategory(state, title));
+
   const onTaskCategoryCardPress = () => {
     navigation.navigate('CategoryTasks', {
       category: title,
@@ -30,7 +32,7 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
         {tasksLength}
       </Text>
       <Image style={styles.taskCategoryImg} source={img} />
-      <Text style={styles.taskText} variant={TextVariant.label_large} color="white">
+      <Text style={styles.taskText} variant={TextVariant.label_large} color={colors.onPrimary}>
         {title}
       </Text>
     </Pressable>
