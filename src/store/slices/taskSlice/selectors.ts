@@ -7,7 +7,7 @@ import { isSameDate } from '@/utils/isSameDate';
 
 export const selectAllTasks = (state: RootState) => state.task;
 
-export const selectTodosByTimeFilter = createSelector(
+export const selectTasksByTimeFilter = createSelector(
   [selectAllTasks, selectTimeFilter],
   (tasks, timeFilter) => {
     const taskArray = Object.values(tasks);
@@ -42,7 +42,7 @@ export const selectDailyTasks = createSelector([(state: RootState) => state.task
 );
 
 export const selectTasksByCategory = createSelector(
-  [selectTodosByTimeFilter, (state: RootState, category: string) => category],
+  [selectTasksByTimeFilter, (state: RootState, category: string) => category],
   (tasks, category) => Object.values(tasks).filter((t) => t.category === category)
 );
 
