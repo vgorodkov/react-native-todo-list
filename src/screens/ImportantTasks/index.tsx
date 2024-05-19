@@ -5,7 +5,7 @@ import { useAppSelector } from '@/store/hooks';
 import { selectImportantTasks } from '@/store/slices/taskSlice/selectors';
 
 export const ImportantTasksScreen = () => {
-  const importantTasks = useAppSelector((state) => selectImportantTasks(state));
+  const importantTasks = useAppSelector(selectImportantTasks);
 
   return <TaskList tasks={importantTasks} />;
 };

@@ -10,4 +10,7 @@ export const styles = StyleSheet.create({
     borderColor: '#646FD4',
     borderRadius: 14,
   },
+  activeTimeFilter: {
+    backgroundColor: '#646FD4',
+  },
 });

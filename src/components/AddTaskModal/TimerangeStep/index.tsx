@@ -3,13 +3,14 @@ import DatePicker from 'react-native-date-picker';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { handleTimeRangeSelection } from '@/store/slices/taskModalSlice';
+import { selectTimerange } from '@/store/slices/taskModalSlice/selectors';
 
 import { ListItem } from '../ListItem';
 import { TimerangeRow } from './TimerangeRow';
 
 export const TimerangeStep = () => {
   const dispatch = useAppDispatch();
-  const timeRange = useAppSelector((state) => state.taskModal.timeRange);
+  const timeRange = useAppSelector(selectTimerange);
 
   const [isOpen, setIsOpen] = useState(false);
   const [timeMode, setTimeMode] = useState<'from' | 'to'>('from');
