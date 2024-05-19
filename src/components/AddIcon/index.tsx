@@ -1,14 +1,11 @@
 import React from 'react';
 import { Image, Pressable } from 'react-native';
 
+import { DEFAULT_SIZE } from './constants';
 import { styles } from './styles';
+import { AddIconProps } from './types';
 
-interface AddIconProps {
-  onAddIconPress: () => void;
-  size?: number;
-}
-
-export const AddIcon = ({ onAddIconPress, size = 32 }: AddIconProps) => {
+export const AddIcon = ({ onAddIconPress, size = DEFAULT_SIZE }: AddIconProps) => {
   return (
     <Pressable onPress={onAddIconPress} style={styles.taskAddBtnIconContainer}>
       <Image
