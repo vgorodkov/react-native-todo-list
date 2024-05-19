@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-type TimeFilter = 'Today' | 'Week' | 'Month';
+import { TimeFilter } from '@/types/timefilter';
 
 interface TimeFilterState {
   selected: TimeFilter;
