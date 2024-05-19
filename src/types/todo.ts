@@ -6,7 +6,6 @@ export interface TodoTask {
   description: string;
   category: string;
   toDateTimestamp: number;
-
   timeRange: {
     from: string;
     to: string;
