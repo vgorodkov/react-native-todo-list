@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 import { View } from 'react-native';
 
-import { LinearEllipse } from '../UI/LinearEllipse';
-import { RadialEllipse } from '../UI/RadialEllipse';
+import { GradientEllipsesBg } from '../GradientEllipsesBg';
 import {
   leftGradientSize,
   leftGradientStops,
@@ -14,20 +13,14 @@ import { styles } from './styles';
 export const ListGradientWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.leftGradientContainer}>
-        <RadialEllipse
-          width={leftGradientSize.width}
-          height={leftGradientSize.height}
-          stops={leftGradientStops}
-        />
-      </View>
-      <View style={styles.rightGradientContainer}>
-        <LinearEllipse
-          width={rightGradientSize.width}
-          height={rightGradientSize.height}
-          stops={rightGradientStops}
-        />
-      </View>
+      <GradientEllipsesBg
+        leftEllipsisStyle={styles.leftGradientContainer}
+        leftEllipsisSize={leftGradientSize}
+        leftGradientStops={leftGradientStops}
+        rightEllipsisStyle={styles.rightGradientContainer}
+        rightEllipsisSize={rightGradientSize}
+        rightGradientStops={rightGradientStops}
+      />
       {children}
     </View>
   );
