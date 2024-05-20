@@ -2,14 +2,20 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View } from 'react-native';
 
+import { useAppSelector } from '@/store/hooks';
+import { selectTimeFilter } from '@/store/slices/timeFilterSlice/selectors';
+
 import { Input } from '../UI/Input';
 
 export const TaskSearchbar = () => {
   const navigation = useNavigation();
+
+  const timeFilter = useAppSelector(selectTimeFilter);
+
   const [taskQuery, setTaskQuery] = useState('');
 
   const onSubmit = () => {
-    navigation.navigate('ByTitleTasks', { taskQuery });
+    navigation.navigate('ByTitleTasks', { taskQuery, timeFilter });
     setTaskQuery('');
   };
 
