@@ -6,5 +6,6 @@ import { selectDoneTasks } from '@/store/slices/taskSlice/selectors';
 
 export const DoneTasksScreen = () => {
   const doneTasks = useAppSelector(selectDoneTasks);
+
   return <TaskList tasks={doneTasks} />;
 };

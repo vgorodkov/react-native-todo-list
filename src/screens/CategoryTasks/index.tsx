@@ -9,9 +9,9 @@ import { useAppSelector } from '@/store/hooks';
 import { selectTasksByCategory } from '@/store/slices/taskSlice/selectors';
 
 import { styles } from './styles';
+import { CategoryTasksScreenProps } from './types';
 
-//TODO: type navigation route params
-export const CategoryTasksScreen = ({ route, navigation }: any) => {
+export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenProps) => {
   const { category } = route.params;
   const { height } = useWindowDimensions();
   const categoryTasks = useAppSelector((state) => selectTasksByCategory(state, category));

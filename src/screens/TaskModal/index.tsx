@@ -14,17 +14,22 @@ import { Modal } from '@/components/UI/Modal';
 import { useAppDispatch } from '@/store/hooks';
 import { setCategory } from '@/store/slices/taskModalSlice';
 
+import { TaskModalProps } from './types';
+
 const MODAL_WIDTH = 320;
 const MODAL_HEIGHT = 350;
 
-//TODO: any
-export const TaskModal = ({ route }: any) => {
-  const { category } = route.params;
+export const TaskModal = ({ route }: TaskModalProps) => {
+  const { category, id } = route.params;
+
   const dispatch = useAppDispatch();
+
   const scrollViewRef = useRef<ScrollView>(null);
 
   useFocusEffect(() => {
-    dispatch(setCategory(category));
+    if (category) {
+      dispatch(setCategory(category));
+    }
   });
 
   return (
@@ -42,7 +47,7 @@ export const TaskModal = ({ route }: any) => {
         <DateStep />
         <TimerangeStep />
       </ScrollView>
-      <ControlBtns scrollViewRef={scrollViewRef} />
+      <ControlBtns id={id} scrollViewRef={scrollViewRef} />
     </Modal>
   );
 };

@@ -5,5 +5,11 @@ export type MainStackParamList = {
     category: string;
   };
   AddCategoryModal: undefined;
-  TaskModal: undefined;
+  TaskModal: {
+    category?: string;
+    id?: string;
+  };
+  ByTitleTasks: {
+    taskQuery: string;
+  };
 };
