@@ -3,39 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { TodoTask, TodoTaskDTO } from '@/types/todo';
 
+import { toggleSubtaskIsDone, toggleTaskIsDone } from './utils';
+
 export interface TaskState {
   [id: string]: TodoTask;
 }
 
 const initialState: TaskState = {};
-
-const toggleTaskIsDone = (state: TaskState, id: string, isDone: boolean) => {
-  if (state[id]) {
-    state[id].isDone = isDone;
-    state[id].subtasks.forEach((subtask) => {
-      subtask.isDone = isDone;
-    });
-  }
-};
-
-const toggleSubtaskIsDone = (
-  state: TaskState,
-  taskId: string,
-  subtaskId: string,
-  isDone: boolean
-) => {
-  const subtaskToFind = state[taskId].subtasks.find((subtask) => subtask.id === subtaskId);
-  if (subtaskToFind) {
-    subtaskToFind.isDone = isDone;
-  }
-  const isAllSubtasksIsDone = state[taskId].subtasks.every((subtask) => subtask.isDone);
-  if (isAllSubtasksIsDone) {
-    state[taskId].isDone = isDone;
-    state[taskId].subtasks.forEach((subtask) => {
-      subtask.isDone = isDone;
-    });
-  }
-};
 
 export const taskSlice = createSlice({
   name: 'task',
@@ -47,6 +21,10 @@ export const taskSlice = createSlice({
         id,
         ...action.payload,
       };
+    },
+    editTask: (state, action: PayloadAction<{ id: string; taskDTO: TodoTaskDTO }>) => {
+      const { id, taskDTO } = action.payload;
+      state[id] = { id, ...taskDTO };
     },
     deleteTask: (state, action: PayloadAction<string>) => {
       delete state[action.payload];
@@ -70,6 +48,7 @@ export const taskSlice = createSlice({
 
 export const {
   addTask,
+  editTask,
   deleteTask,
   setTaskIsDone,
   setTaskIsUndone,
