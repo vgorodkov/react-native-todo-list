@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AddCategoryModal } from '@/screens/AddCategoryModal';
+import { ByTitleTasksScreen } from '@/screens/ByTitleTasks';
 import { CategoryTasksScreen } from '@/screens/CategoryTasks';
 import { OnboardingScreen } from '@/screens/Onboarding';
 import { TaskModal } from '@/screens/TaskModal';
@@ -16,6 +17,7 @@ export const MainNavigation = () => {
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
       <Stack.Screen name="CategoryTasks" component={CategoryTasksScreen} />
+      <Stack.Screen name="ByTitleTasks" component={ByTitleTasksScreen} />
       <Stack.Group screenOptions={{ presentation: 'transparentModal', animation: 'fade' }}>
         <Stack.Screen name="AddCategoryModal" component={AddCategoryModal} />
         <Stack.Screen name="TaskModal" component={TaskModal} />
