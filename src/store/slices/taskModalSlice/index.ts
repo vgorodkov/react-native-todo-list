@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { TodoSubtask, TodoTask, TodoTaskDTO } from '@/types/todo';
 
-import { addTask } from '../taskSlice';
+import { addTask, editTask } from '../taskSlice';
 
 interface TaskModalState {
   taskDTO: TodoTaskDTO;
@@ -69,9 +69,13 @@ export const taskModalSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(addTask, () => {
-      return initialState;
-    });
+    builder
+      .addCase(addTask, () => {
+        return initialState;
+      })
+      .addCase(editTask, () => {
+        return initialState;
+      });
   },
 });
 
