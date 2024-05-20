@@ -1,8 +1,11 @@
+import { TimeFilter } from './timefilter';
+
 export type MainStackParamList = {
   Onboarding: undefined;
   Drawer: undefined;
   CategoryTasks: {
     category: string;
+    timeFilter: TimeFilter;
   };
   AddCategoryModal: undefined;
   TaskModal: {
@@ -11,5 +14,6 @@ export type MainStackParamList = {
   };
   ByTitleTasks: {
     taskQuery: string;
+    timeFilter: TimeFilter;
   };
 };
