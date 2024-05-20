@@ -6,18 +6,16 @@ import {
   BasicInformationStep,
   ControlBtns,
   DateStep,
+  Header,
   SubtasksStep,
   TimerangeStep,
-} from '@/components/AddTaskModal';
-import { Header } from '@/components/AddTaskModal/Header';
+} from '@/components/TaskModal';
 import { Modal } from '@/components/UI/Modal';
 import { useAppDispatch } from '@/store/hooks';
 import { setCategory } from '@/store/slices/taskModalSlice';
 
+import { MODAL_HEIGHT, MODAL_WIDTH } from './constants';
 import { TaskModalProps } from './types';
-
-const MODAL_WIDTH = 320;
-const MODAL_HEIGHT = 350;
 
 export const TaskModal = ({ route }: TaskModalProps) => {
   const { category, id } = route.params;
