@@ -20,7 +20,7 @@ export const TaskTodayInfo = () => {
     <View style={styles.container}>
       <Text variant={TextVariant.title_small} color={colors.primaryText}>
         {FIRST_PART_INFO}
-        <Text variant={TextVariant.title_medium} color={colors.primary}>
+        <Text variant={TextVariant.title_medium} color={colors.onPrimary}>
           {tasksLengthByTimeFilter} {SECOND_PART_INFO}
         </Text>
         {formatTimeFilterTitle(timeFilter)}
