@@ -20,8 +20,12 @@ export const ControlBtns = ({
   id?: string;
 }) => {
   const dispatch = useAppDispatch();
+
   const navigation = useNavigation();
+
   const taskDTO = useAppSelector(selectTaskDTO);
+  const isNextStepAvaible = useAppSelector((state) => state.taskModal.isNextStepAvaible);
+
   const [scrollViewIndex, setScrollViewIndex] = useState(0);
 
   const onNextBtnPress = () => {
@@ -52,7 +56,7 @@ export const ControlBtns = ({
       <Button onPress={onBackBtnPress} variant="text">
         {scrollViewIndex === 0 ? 'Close' : 'Back'}
       </Button>
-      <Button onPress={onNextBtnPress} variant="text">
+      <Button disabled={!isNextStepAvaible} onPress={onNextBtnPress} variant="text">
         {scrollViewIndex === ITEMS_AMOUNT - 1 ? 'Submit' : 'Next'}
       </Button>
     </View>

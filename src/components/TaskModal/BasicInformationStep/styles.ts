@@ -6,4 +6,10 @@ export const styles = StyleSheet.create({
   container: {
     gap: spacing.m,
   },
+  errorText: {
+    color: 'red',
+  },
+  inputContainer: {
+    height: 64,
+  },
 });
