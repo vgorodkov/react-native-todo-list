@@ -4,6 +4,7 @@ import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { AddIcon } from '@/components/AddIcon';
 import { DoneTaskListHeader } from '@/components/DoneTaskListHeader';
+import { ListGradientWrapper } from '@/components/ListGradientWrapper';
 import { TaskList } from '@/components/TaskList';
 import { useAppSelector } from '@/store/hooks';
 import { selectTasksByCategory } from '@/store/slices/taskSlice/selectors';
@@ -19,7 +20,7 @@ export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenPr
   const undoneTasks = categoryTasks.filter((t) => !t.isDone);
 
   const BOTTOM_EDGE = height * 0.8 - 72;
-  const TOP_EDGE = 0;
+  const TOP_EDGE = 16;
   const listHeight = useSharedValue(BOTTOM_EDGE);
 
   const onAddIconPress = () => {
@@ -37,7 +38,7 @@ export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenPr
   };
 
   return (
-    <>
+    <ListGradientWrapper>
       <View style={styles.todosContainer}>
         <Animated.View style={{ height: listHeight }}>
           <TaskList tasks={undoneTasks} />
@@ -48,6 +49,6 @@ export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenPr
       <View style={styles.addTodosContainer}>
         <AddIcon onAddIconPress={onAddIconPress} />
       </View>
-    </>
+    </ListGradientWrapper>
   );
 };
