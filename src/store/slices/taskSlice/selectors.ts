@@ -41,6 +41,11 @@ export const selectDailyTasks = createSelector([(state: RootState) => state.task
   Object.values(tasks).filter((task) => isSameDate(task.toDateTimestamp))
 );
 
+export const selectTasksByTitle = createSelector(
+  [selectTasksByTimeFilter, (state: RootState, title: string) => title],
+  (tasks, title) => Object.values(tasks).filter((t) => t.title.includes(title))
+);
+
 export const selectTasksByCategory = createSelector(
   [selectTasksByTimeFilter, (state: RootState, category: string) => category],
   (tasks, category) => Object.values(tasks).filter((t) => t.category === category)
