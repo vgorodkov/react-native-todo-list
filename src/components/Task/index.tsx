@@ -22,7 +22,7 @@ export const Task = memo(({ title, description, isDone, subtasks, timeRange, id 
       layout={LinearTransition}
       exiting={SlideOutRight}
       entering={SlideInLeft}
-      style={[styles.taskContainer]}
+      style={styles.taskContainer}
     >
       <TaskContent
         id={id}
