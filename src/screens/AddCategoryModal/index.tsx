@@ -6,7 +6,6 @@ import { Button, Input, Text } from '@/components/UI';
 import { Modal } from '@/components/UI/Modal';
 import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
-import { spacing } from '@/constants/spacing';
 import { useAppDispatch } from '@/store/hooks';
 import { addCategory } from '@/store/slices/categorySlice';
 
@@ -45,7 +44,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
   };
 
   return (
-    <Modal style={{ margin: spacing.xl, padding: spacing.l, paddingBottom: spacing.s }}>
+    <Modal style={styles.modalContainer}>
       <Input
         value={categoryTitle}
         onChangeText={setCategoryTitle}
