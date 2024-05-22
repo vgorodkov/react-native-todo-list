@@ -7,6 +7,8 @@ import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { TodosRevalidator } from '@/components/TodosRevalidator';
 import { colors } from '@/constants/colors';
 import { customTheme } from '@/constants/theme';
 import { MainNavigation } from '@/navigation/Main';
@@ -20,10 +22,14 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer theme={customTheme}>
-          <StatusBar backgroundColor={colors.primary} />
-          <MainNavigation />
-        </NavigationContainer>
+        <ErrorBoundary>
+          <NavigationContainer theme={customTheme}>
+            <StatusBar backgroundColor={colors.primary} />
+            <TodosRevalidator>
+              <MainNavigation />
+            </TodosRevalidator>
+          </NavigationContainer>
+        </ErrorBoundary>
       </PersistGate>
     </Provider>
   );
