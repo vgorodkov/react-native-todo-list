@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { View } from 'react-native';
-import Animated, { LinearTransition } from 'react-native-reanimated';
+import Animated, { LinearTransition, SlideInLeft, SlideOutRight } from 'react-native-reanimated';
 
 import { Subtask } from '@/components/Subtask';
 import { TodoTask } from '@/types/todo';
@@ -8,7 +8,7 @@ import { TodoTask } from '@/types/todo';
 import { styles } from './styles';
 import { TaskContent } from './TaskContent';
 
-export const Task = ({ title, description, isDone, subtasks, timeRange, id }: TodoTask) => {
+export const Task = memo(({ title, description, isDone, subtasks, timeRange, id }: TodoTask) => {
   const [isSubtasksShown, setIsSubtaskShown] = useState(false);
 
   const hasSubtasks = subtasks.length > 0;
@@ -18,7 +18,12 @@ export const Task = ({ title, description, isDone, subtasks, timeRange, id }: To
   };
 
   return (
-    <Animated.View layout={LinearTransition} style={[styles.taskContainer]}>
+    <Animated.View
+      layout={LinearTransition}
+      exiting={SlideOutRight}
+      entering={SlideInLeft}
+      style={[styles.taskContainer]}
+    >
       <TaskContent
         id={id}
         title={title}
@@ -44,4 +49,4 @@ export const Task = ({ title, description, isDone, subtasks, timeRange, id }: To
       )}
     </Animated.View>
   );
-};
+});
