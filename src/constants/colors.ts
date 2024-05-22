@@ -4,4 +4,5 @@ export const colors = {
   primaryText: '#363636',
   secondaryText: '#8D93AB',
   categoryBorder: '#D25EB0',
+  errorText: 'red',
 };
