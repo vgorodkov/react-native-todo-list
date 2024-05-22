@@ -19,7 +19,12 @@ export const DateStep = memo(() => {
 
   return (
     <ListItem style={commonStyles.centeredView}>
-      <DatePicker mode="date" date={date} onDateChange={onDateChange} />
+      <DatePicker
+        minimumDate={new Date(Date.now())}
+        mode="date"
+        date={date}
+        onDateChange={onDateChange}
+      />
     </ListItem>
   );
 });
