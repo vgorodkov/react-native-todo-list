@@ -9,7 +9,7 @@ import { selectTaskModalIsImportant } from '@/store/slices/taskModalSlice/select
 
 import { styles } from './styles';
 
-export const Header = () => {
+export const Header = ({ title }: { title: string }) => {
   const dispatch = useAppDispatch();
 
   const isTaskImportant = useAppSelector(selectTaskModalIsImportant);
@@ -21,7 +21,7 @@ export const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.empty} />
-      <Text variant={TextVariant.label_large}>Create new Todo</Text>
+      <Text variant={TextVariant.label_large}>{title}</Text>
       <Pressable onPress={toggleTaskImportant}>
         <Image
           source={
