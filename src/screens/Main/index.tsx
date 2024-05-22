@@ -1,10 +1,10 @@
 import { View } from 'react-native';
 
 import { CategoriesList } from '@/components/CategoriesList';
-import { GradientEllipsesBg } from '@/components/GradientEllipsesBg';
 import { TaskSearchbar } from '@/components/TaskSearchbar';
 import { TaskTodayInfo } from '@/components/TaskTodayInfo';
 import { TimeFiltersRow } from '@/components/TimeFiltersRow';
+import { GradientEllipsesBg } from '@/components/UI/GradientEllipsesBg';
 
 import {
   leftEllipsisSize,

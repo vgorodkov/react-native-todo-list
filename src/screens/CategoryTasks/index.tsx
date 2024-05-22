@@ -2,10 +2,10 @@ import React from 'react';
 import { useWindowDimensions, View } from 'react-native';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { AddIcon } from '@/components/AddIcon';
 import { DoneTaskListHeader } from '@/components/DoneTaskListHeader';
 import { ListGradientWrapper } from '@/components/ListGradientWrapper';
 import { TaskList } from '@/components/TaskList';
+import { AddIcon } from '@/components/UI/AddIcon';
 import { useAppSelector } from '@/store/hooks';
 import { selectTasksByCategory } from '@/store/slices/taskSlice/selectors';
 

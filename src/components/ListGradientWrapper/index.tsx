@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { View } from 'react-native';
 
-import { GradientEllipsesBg } from '../GradientEllipsesBg';
+import { GradientEllipsesBg } from '../UI/GradientEllipsesBg';
 import {
   leftGradientSize,
   leftGradientStops,
