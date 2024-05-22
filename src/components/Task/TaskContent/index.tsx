@@ -7,7 +7,7 @@ import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
 import { useAppDispatch } from '@/store/hooks';
 import { setTaskIsDone, setTaskIsUndone } from '@/store/slices/taskSlice';
-import { formatTime } from '@/utils/formatTime';
+import { getTimeFromISO } from '@/utils/getTimeFromISO';
 
 import { TaskMenu } from '../TaskMenu';
 import { styles } from './styles';
@@ -38,14 +38,18 @@ export const TaskContent = ({
     setIsTaskMenuShown((prev) => !prev);
   };
 
+  const closeTaskMenu = () => {
+    setIsTaskMenuShown(false);
+  };
+
   return (
     <Pressable disabled={disabled} onPress={onTaskPress} style={styles.task}>
       <View style={styles.timeRange}>
         <Text color={colors.primaryText} variant={TextVariant.label_small}>
-          {formatTime(timeRange.from)}
+          {getTimeFromISO(timeRange.from)}
         </Text>
         <Text color={colors.primaryText} variant={TextVariant.label_small}>
-          {formatTime(timeRange.to)}
+          {getTimeFromISO(timeRange.to)}
         </Text>
       </View>
       <Checkbox isDone={isDone} onPress={onCheckBoxPress} />
@@ -57,7 +61,7 @@ export const TaskContent = ({
           {description}
         </Text>
       </View>
-      {isTaskMenuShown && <TaskMenu isDone={isDone} id={id} />}
+      {isTaskMenuShown && <TaskMenu closeTaskMenu={closeTaskMenu} id={id} />}
       <Pressable onPress={onTaskMenuToggleBtn}>
         <Image style={styles.taskMenuToggleBtn} source={require('@/assets/icons/more.png')} />
       </Pressable>
