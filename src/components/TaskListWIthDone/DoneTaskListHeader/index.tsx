@@ -2,7 +2,7 @@ import { Image, Pressable } from 'react-native';
 
 import { Text } from '@/components/UI/Text';
 
-import { TextVariant } from '../UI/Text/types';
+import { TextVariant } from '../../UI/Text/types';
 import { styles } from './styles';
 import { DoneTaskListHeaderProps } from './types';
 
