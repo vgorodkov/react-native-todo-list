@@ -4,27 +4,28 @@ import { Image, Pressable, View } from 'react-native';
 import { Text } from '@/components/UI';
 import { TextVariant } from '@/components/UI/Text/types';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { toggleTaskModalIsImportant } from '@/store/slices/taskModalSlice';
-import { selectIsImportant } from '@/store/slices/taskModalSlice/selectors';
+import { toggleIsImportant } from '@/store/slices/taskModalSlice';
+import { selectTaskModalIsImportant } from '@/store/slices/taskModalSlice/selectors';
 
 import { styles } from './styles';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
-  const isImportant = useAppSelector(selectIsImportant);
 
-  const onIsImportantIconPress = () => {
-    dispatch(toggleTaskModalIsImportant());
+  const isTaskImportant = useAppSelector(selectTaskModalIsImportant);
+
+  const toggleTaskImportant = () => {
+    dispatch(toggleIsImportant());
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.empty} />
       <Text variant={TextVariant.label_large}>Create new Todo</Text>
-      <Pressable onPress={onIsImportantIconPress}>
+      <Pressable onPress={toggleTaskImportant}>
         <Image
           source={
-            isImportant
+            isTaskImportant
               ? require('@/assets/icons/important_active.png')
               : require('@/assets/icons/important_inactive.png')
           }

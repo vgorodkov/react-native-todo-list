@@ -1,8 +1,8 @@
 import { RootState } from '@/store/types';
 
-export const selectTaskDTO = (state: RootState) => state.taskModal.taskDTO;
-export const selectTitle = (state: RootState) => state.taskModal.taskDTO.title;
-export const selectDescription = (state: RootState) => state.taskModal.taskDTO.description;
-export const selectIsImportant = (state: RootState) => state.taskModal.taskDTO.isImportant;
-export const selectSubtasks = (state: RootState) => state.taskModal.taskDTO.subtasks;
-export const selectTimerange = (state: RootState) => state.taskModal.taskDTO.timeRange;
+export const selectTaskModalToDateTimestamp = (state: RootState) =>
+  state.taskModal.task.toDateTimestamp;
+
+export const selectTaskModalIsDone = (state: RootState) => state.taskModal.task.isDone;
+export const selectTaskModalIsImportant = (state: RootState) => state.taskModal.task.isImportant;
+export const selectTaskModalSubtasks = (state: RootState) => state.taskModal.task.subtasks;

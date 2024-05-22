@@ -8,6 +8,5 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     padding: spacing.s,
     borderRadius: 100,
-    alignSelf: 'center',
   },
 });

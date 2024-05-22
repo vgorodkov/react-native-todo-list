@@ -1,4 +1,5 @@
 import { TimeFilter } from './timefilter';
+import { TodoTask } from './todo';
 
 export type MainStackParamList = {
   Onboarding: undefined;
@@ -9,8 +10,9 @@ export type MainStackParamList = {
   };
   AddCategoryModal: undefined;
   TaskModal: {
-    category?: string;
-    id?: string;
+    category: string;
+    task?: TodoTask;
+    initialStep?: number;
   };
   ByTitleTasks: {
     taskQuery: string;

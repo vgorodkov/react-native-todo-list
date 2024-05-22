@@ -3,10 +3,12 @@ import { StyleSheet } from 'react-native';
 import { spacing } from '@/constants/spacing';
 
 export const styles = StyleSheet.create({
-  controlBtns: {
+  container: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     gap: spacing.m,
-    paddingHorizontal: spacing.m,
+    alignItems: 'center',
   },
+
+  deleteIcon: { width: 24, height: 24 },
 });

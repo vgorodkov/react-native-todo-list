@@ -1,51 +1,53 @@
-import { useFocusEffect } from '@react-navigation/native';
-import React, { useRef } from 'react';
-import { ScrollView } from 'react-native';
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useEffect } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import {
-  BasicInformationStep,
-  ControlBtns,
-  DateStep,
-  Header,
-  SubtasksStep,
-  TimerangeStep,
-} from '@/components/TaskModal';
+import { Header } from '@/components/TaskModal';
+import { StepList } from '@/components/TaskModal/StepList';
 import { Modal } from '@/components/UI/Modal';
+import { MODAL_HEIGHT, MODAL_WIDTH, taskModalSteps } from '@/constants/task';
 import { useAppDispatch } from '@/store/hooks';
-import { setCategory } from '@/store/slices/taskModalSlice';
+import { setInitialState } from '@/store/slices/taskModalSlice';
 
-import { MODAL_HEIGHT, MODAL_WIDTH } from './constants';
 import { TaskModalProps } from './types';
+import { validationSchema } from './validationSchema';
 
 export const TaskModal = ({ route }: TaskModalProps) => {
-  const { category, id } = route.params;
+  const { task, initialStep, category } = route.params;
 
   const dispatch = useAppDispatch();
 
-  const scrollViewRef = useRef<ScrollView>(null);
-
-  useFocusEffect(() => {
-    if (category) {
-      dispatch(setCategory(category));
-    }
+  const methods = useForm({
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      title: task?.title ?? '',
+      description: task?.description ?? '',
+      subtask: '',
+      timeRange: {
+        from: new Date(task?.timeRange.from ?? Date.now()),
+        to: new Date(task?.timeRange.to ?? Date.now()),
+      },
+    },
   });
+
+  useEffect(() => {
+    if (task) {
+      const { toDateTimestamp, isDone, isImportant, subtasks } = task;
+      dispatch(setInitialState({ toDateTimestamp, isDone, isImportant, subtasks }));
+    }
+  }, [task, dispatch]);
 
   return (
     <Modal style={{ height: MODAL_HEIGHT, width: MODAL_WIDTH }}>
       <Header />
-      <ScrollView
-        scrollEnabled={false}
-        ref={scrollViewRef}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-      >
-        <BasicInformationStep />
-        <SubtasksStep />
-        <DateStep />
-        <TimerangeStep />
-      </ScrollView>
-      <ControlBtns id={id} scrollViewRef={scrollViewRef} />
+      <FormProvider {...methods}>
+        <StepList initialStep={initialStep} category={category} task={task}>
+          {taskModalSteps.map((step) => {
+            const { Component, id } = step;
+            return <Component key={id} />;
+          })}
+        </StepList>
+      </FormProvider>
     </Modal>
   );
 };

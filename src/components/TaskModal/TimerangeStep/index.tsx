@@ -1,32 +1,42 @@
 import React, { useState } from 'react';
+import { useFormContext, useWatch } from 'react-hook-form';
 import DatePicker from 'react-native-date-picker';
 
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { handleTimeRangeSelection } from '@/store/slices/taskModalSlice';
-import { selectTimerange } from '@/store/slices/taskModalSlice/selectors';
+import { getTimeFromDate } from '@/utils/getTimeFromDate';
 
 import { ListItem } from '../ListItem';
+import { FormContext } from '../types';
 import { TimerangeRow } from './TimerangeRow';
 
 export const TimerangeStep = () => {
-  const dispatch = useAppDispatch();
-  const timeRange = useAppSelector(selectTimerange);
+  const {
+    control,
+    setValue,
+    formState: { errors },
+  } = useFormContext<FormContext>();
 
+  const fromDate = useWatch({
+    control,
+    name: 'timeRange.from',
+  });
+  const toDate = useWatch({
+    control,
+    name: 'timeRange.to',
+  });
   const [isOpen, setIsOpen] = useState(false);
   const [timeMode, setTimeMode] = useState<'from' | 'to'>('from');
-  const [fromDate, setFromDate] = useState(new Date(timeRange.from));
-  const [toDate, setToDate] = useState(new Date(timeRange.to));
+
+  const itFromTimeMode = timeMode === 'from';
 
   const onDateChange = (date: Date) => {
-    if (timeMode === 'from') {
-      setFromDate(date);
+    if (itFromTimeMode) {
+      setValue('timeRange.from', date);
     } else {
-      setToDate(date);
+      setValue('timeRange.to', date);
     }
   };
 
   const onConfirm = (date: Date) => {
-    dispatch(handleTimeRangeSelection({ mode: timeMode, value: date.toISOString() }));
     onDateChange(date);
     setIsOpen(false);
   };
@@ -44,19 +54,21 @@ export const TimerangeStep = () => {
     <ListItem>
       <TimerangeRow
         label="From:"
-        time={fromDate.toTimeString().slice(0, 5)}
+        time={getTimeFromDate(fromDate)}
         onPress={openDatePicker('from')}
+        errorText={errors.timeRange?.from?.message}
       />
       <TimerangeRow
         label="To:"
-        time={toDate.toTimeString().slice(0, 5)}
+        time={getTimeFromDate(toDate)}
         onPress={openDatePicker('to')}
+        errorText={errors.timeRange?.to?.message}
       />
       <DatePicker
         modal
         open={isOpen}
         mode="time"
-        date={timeMode === 'from' ? fromDate : toDate}
+        date={itFromTimeMode ? fromDate : toDate}
         onDateChange={onDateChange}
         onConfirm={onConfirm}
         onCancel={onCancel}
