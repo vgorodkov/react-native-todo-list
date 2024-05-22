@@ -8,20 +8,20 @@ import { OnboardingScreen } from '@/screens/Onboarding';
 import { TaskModal } from '@/screens/TaskModal';
 import { MainStackParamList } from '@/types/navigation';
 
-import { HeaderTitleByParams } from './options';
+import { HeaderTitleByParams, StackModalScreensOptions, StackNavigatorOptions } from './options';
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
 export const MainNavigation = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={StackNavigatorOptions}>
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Drawer" component={DrawerNavigation} />
       <Stack.Group screenOptions={HeaderTitleByParams}>
         <Stack.Screen name="CategoryTasks" component={CategoryTasksScreen} />
         <Stack.Screen name="ByTitleTasks" component={ByTitleTasksScreen} />
       </Stack.Group>
-      <Stack.Group screenOptions={{ presentation: 'transparentModal', animation: 'fade' }}>
+      <Stack.Group screenOptions={StackModalScreensOptions}>
         <Stack.Screen name="AddCategoryModal" component={AddCategoryModal} />
         <Stack.Screen name="TaskModal" component={TaskModal} />
       </Stack.Group>
