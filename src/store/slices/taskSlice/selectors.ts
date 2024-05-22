@@ -2,32 +2,16 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'src/store/types';
 
 import { selectTimeFilter } from '@/store/slices/timeFilterSlice/selectors';
-import { getDaysFromNow } from '@/utils/getDaysFromNow';
+import { filterTasksByTime } from '@/utils/filterTasksByTime';
 import { isSameDate } from '@/utils/isSameDate';
 
 export const selectAllTasks = (state: RootState) => state.task;
 
-export const selectTasksByTimeFilter = createSelector(
-  [selectAllTasks, selectTimeFilter],
-  (tasks, timeFilter) => {
-    const taskArray = Object.values(tasks);
-
-    switch (timeFilter) {
-      case 'Today':
-        return taskArray.filter((task) => isSameDate(task.toDateTimestamp));
-      case 'Week':
-        return taskArray.filter((task) => getDaysFromNow(task.toDateTimestamp) <= 7);
-      case 'Month':
-        return taskArray.filter((task) => getDaysFromNow(task.toDateTimestamp) <= 31);
-      default:
-        return taskArray;
-    }
-  }
-);
-
 export const selectDoneTasks = createSelector([(state: RootState) => state.task], (tasks) =>
   Object.values(tasks).filter((task) => task.isDone)
 );
+
+export const selectTaskById = (state: RootState, id: string) => state.task[id];
 
 export const selectUndoneTasks = createSelector([(state: RootState) => state.task], (tasks) =>
   Object.values(tasks).filter((task) => !task.isDone)
@@ -39,6 +23,13 @@ export const selectImportantTasks = createSelector([(state: RootState) => state.
 
 export const selectDailyTasks = createSelector([(state: RootState) => state.task], (tasks) =>
   Object.values(tasks).filter((task) => isSameDate(task.toDateTimestamp))
+);
+
+export const selectTasksByTimeFilter = createSelector(
+  [selectAllTasks, selectTimeFilter],
+  (tasks, timeFilter) => {
+    return filterTasksByTime(tasks, timeFilter);
+  }
 );
 
 export const selectTasksByTitle = createSelector(
@@ -54,4 +45,12 @@ export const selectTasksByCategory = createSelector(
 export const selectTasksLengthByCategory = createSelector(
   selectTasksByCategory,
   (taskByCategory) => taskByCategory.length
+);
+
+export const selectDoneTasksByCategory = createSelector(selectTasksByCategory, (taskByCategory) =>
+  taskByCategory.filter((task) => task.isDone)
+);
+
+export const selectUndoneTasksByCategory = createSelector(selectTasksByCategory, (taskByCategory) =>
+  taskByCategory.filter((task) => !task.isDone)
 );
