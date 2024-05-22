@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import DatePicker from 'react-native-date-picker';
 
 import { commonStyles } from '@/commonStyles';
@@ -7,9 +7,8 @@ import { handleDateSelection } from '@/store/slices/taskModalSlice';
 
 import { ListItem } from '../ListItem';
 
-export const DateStep = () => {
+export const DateStep = memo(() => {
   const dispatch = useAppDispatch();
-
   const [date, setDate] = useState(new Date());
 
   const onDateChange = (changedDate: Date) => {
@@ -23,4 +22,4 @@ export const DateStep = () => {
       <DatePicker mode="date" date={date} onDateChange={onDateChange} />
     </ListItem>
   );
-};
+});
