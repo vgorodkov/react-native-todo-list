@@ -1,12 +1,12 @@
 import { View, ViewProps } from 'react-native';
 
+import { MODAL_WIDTH } from '@/constants/task';
+
 import { styles } from './styles';
 
-interface ListItemProps extends ViewProps {}
-
-export const ListItem = ({ children, style, ...props }: ListItemProps) => {
+export const ListItem = ({ children, style, ...props }: ViewProps) => {
   return (
-    <View {...props} style={[styles.listItem, style]}>
+    <View {...props} style={[styles.listItem, style, { width: MODAL_WIDTH }]}>
       {children}
     </View>
   );
