@@ -5,9 +5,9 @@ import { selectTimeFilter } from '@/store/slices/timeFilterSlice/selectors';
 import { filterTasksByTime } from '@/utils/filterTasksByTime';
 import { isSameDate } from '@/utils/isSameDate';
 
-export const selectAllTasks = (state: RootState) => state.task;
+export const selectAllTasks = (state: RootState) => state.task.entities;
 
-export const selectTaskById = (id: string) => (state: RootState) => state.task[id];
+export const selectTaskById = (id: string) => (state: RootState) => state.task.entities[id];
 
 const selectTasksArray = createSelector(selectAllTasks, (tasks) => Object.values(tasks));
 

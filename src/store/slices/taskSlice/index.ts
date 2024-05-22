@@ -7,35 +7,37 @@ import { getDaysFromNow } from '@/utils/getDaysFromNow';
 import { toggleSubtaskIsDone, toggleTaskIsDone } from './utils';
 
 export interface TaskState {
-  [id: string]: TodoTask;
+  entities: Record<string, TodoTask>;
 }
 
-const initialState: TaskState = {};
+const initialState: TaskState = {
+  entities: {},
+};
 
 export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
     revalidateTasks: (state) => {
-      Object.values(state).forEach((task) => {
+      Object.values(state.entities).forEach((task) => {
         if (getDaysFromNow(task.toDateTimestamp) < 0) {
-          delete state[task.id];
+          delete state.entities[task.id];
         }
       });
     },
     addTask: (state, action: PayloadAction<TodoTaskDTO>) => {
       const id = nanoid();
-      state[id] = {
+      state.entities[id] = {
         id,
         ...action.payload,
       };
     },
     editTask: (state, action: PayloadAction<{ id: string; taskDTO: TodoTaskDTO }>) => {
       const { id, taskDTO } = action.payload;
-      state[id] = { id, ...taskDTO };
+      state.entities[id] = { id, ...taskDTO };
     },
     deleteTask: (state, action: PayloadAction<string>) => {
-      delete state[action.payload];
+      delete state.entities[action.payload];
     },
     setTaskIsDone: (state, action: PayloadAction<string>) => {
       toggleTaskIsDone(state, action.payload, true);

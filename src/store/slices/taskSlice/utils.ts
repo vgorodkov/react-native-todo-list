@@ -1,9 +1,9 @@
 import { TaskState } from '.';
 
 export const toggleTaskIsDone = (state: TaskState, id: string, isDone: boolean) => {
-  if (state[id]) {
-    state[id].isDone = isDone;
-    state[id].subtasks.forEach((subtask) => {
+  if (state.entities[id]) {
+    state.entities[id].isDone = isDone;
+    state.entities[id].subtasks.forEach((subtask) => {
       subtask.isDone = isDone;
     });
   }
@@ -15,15 +15,15 @@ export const toggleSubtaskIsDone = (
   subtaskId: string,
   isDone: boolean
 ) => {
-  const subtaskToFind = state[taskId].subtasks.find((subtask) => subtask.id === subtaskId);
+  const subtaskToFind = state.entities[taskId].subtasks.find((subtask) => subtask.id === subtaskId);
   if (subtaskToFind) {
     subtaskToFind.isDone = isDone;
   }
-  const isAllSubtasksIsDone = state[taskId].subtasks.every((subtask) => subtask.isDone);
+  const isAllSubtasksIsDone = state.entities[taskId].subtasks.every((subtask) => subtask.isDone);
 
   if (isAllSubtasksIsDone) {
-    state[taskId].isDone = true;
+    state.entities[taskId].isDone = true;
   } else {
-    state[taskId].isDone = false;
+    state.entities[taskId].isDone = false;
   }
 };
