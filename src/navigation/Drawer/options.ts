@@ -1,7 +1,8 @@
-import { DrawerNavigationOptions } from '@react-navigation/drawer';
+import { DrawerNavigationOptions, DrawerScreenProps } from '@react-navigation/drawer';
 
 import { spacing } from '@/constants/spacing';
 import { DrawerHeaderRight } from '@/navigation/Drawer/DrawerHeaderRight';
+import { MainStackParamList } from '@/types/navigation';
 
 import { renderDrawerIcon } from './utils';
 
@@ -19,8 +20,6 @@ export const drawerMainScreenOptions: DrawerNavigationOptions = {
   title: '',
 };
 
-//TODO: remove any
-
-export const drawerGroupScreenOptions = ({ route }: any) => ({
+export const drawerGroupScreenOptions = ({ route }: DrawerScreenProps<MainStackParamList>) => ({
   drawerIcon: () => renderDrawerIcon(route.name),
 });
