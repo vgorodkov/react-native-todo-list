@@ -12,6 +12,6 @@ export const styles = StyleSheet.create({
     ...commonStyles.shadow,
   },
   subtaskContainer: {
-    gap: 16,
+    gap: spacing.m,
   },
 });
