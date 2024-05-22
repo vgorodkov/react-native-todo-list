@@ -2,6 +2,7 @@ import { nanoid, PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 import { TodoTask, TodoTaskDTO } from '@/types/todo';
+import { getDaysFromNow } from '@/utils/getDaysFromNow';
 
 import { toggleSubtaskIsDone, toggleTaskIsDone } from './utils';
 
@@ -15,6 +16,13 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
+    revalidateTasks: (state) => {
+      Object.values(state).forEach((task) => {
+        if (getDaysFromNow(task.toDateTimestamp) < 0) {
+          delete state[task.id];
+        }
+      });
+    },
     addTask: (state, action: PayloadAction<TodoTaskDTO>) => {
       const id = nanoid();
       state[id] = {
@@ -52,6 +60,7 @@ export const {
   deleteTask,
   setTaskIsDone,
   setTaskIsUndone,
+  revalidateTasks,
   setSubtaskIsDone,
   setSubtaskIsUndone,
 } = taskSlice.actions;
