@@ -3,26 +3,39 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setInitialTaskState } from '@/store/slices/taskModalSlice';
 import { deleteTask } from '@/store/slices/taskSlice';
 
 import { styles } from './styles';
+import { TaskMenuProps } from './types';
 
-export const TaskMenu = ({ id, isDone }: { id: string; isDone: boolean }) => {
+export const TaskMenu = ({ id, closeTaskMenu }: TaskMenuProps) => {
   const dispatch = useAppDispatch();
 
   const navigation = useNavigation();
-  const selectedTodo = useAppSelector((state) => state.task[id]);
+  const selectedTask = useAppSelector((state) => state.task[id]);
+
+  const { isDone } = selectedTask;
 
   const onDeleteTaskBtn = () => {
+    closeTaskMenu();
     dispatch(deleteTask(id));
   };
 
   const onEditTaskBtn = () => {
-    dispatch(setInitialTaskState(selectedTodo));
+    closeTaskMenu();
+
     navigation.navigate('TaskModal', {
-      category: selectedTodo.category,
-      id,
+      category: selectedTask.category,
+      task: selectedTask,
+    });
+  };
+
+  const onAddSubtasksBtn = () => {
+    closeTaskMenu();
+    navigation.navigate('TaskModal', {
+      category: selectedTask.category,
+      task: selectedTask,
+      initialStep: 1,
     });
   };
 
@@ -30,7 +43,7 @@ export const TaskMenu = ({ id, isDone }: { id: string; isDone: boolean }) => {
     <View style={styles.taskMenu}>
       {!isDone && (
         <>
-          <Pressable>
+          <Pressable onPress={onAddSubtasksBtn}>
             <Text>add subtasks</Text>
           </Pressable>
           <Pressable onPress={onEditTaskBtn}>
