@@ -5,6 +5,7 @@ import { Keyboard, View } from 'react-native';
 import { Button } from '@/components/UI';
 import { MODAL_STEPS } from '@/constants/task';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { selectTaskModalTask } from '@/store/slices/taskModalSlice/selectors';
 import { addTask, editTask } from '@/store/slices/taskSlice';
 import { TodoTaskDTO } from '@/types/todo';
 
@@ -24,7 +25,7 @@ export const ControlBtns = ({
 
   const dispatch = useAppDispatch();
 
-  const task = useAppSelector((state) => state.taskModal.task);
+  const task = useAppSelector(selectTaskModalTask);
 
   const handleTaskSubmit = (data: FieldValues) => {
     const { title, description, timeRange } = data;

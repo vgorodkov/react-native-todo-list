@@ -16,7 +16,7 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
   const navigation = useNavigation();
 
   const timeFilter = useAppSelector(selectTimeFilter);
-  const tasksLength = useAppSelector((state) => selectTasksLengthByCategory(state, title));
+  const tasksLength = useAppSelector(selectTasksLengthByCategory(title));
 
   const onTaskCategoryCardPress = () => {
     navigation.navigate('CategoryTasks', {

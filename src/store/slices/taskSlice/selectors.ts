@@ -7,50 +7,55 @@ import { isSameDate } from '@/utils/isSameDate';
 
 export const selectAllTasks = (state: RootState) => state.task;
 
-export const selectDoneTasks = createSelector([(state: RootState) => state.task], (tasks) =>
-  Object.values(tasks).filter((task) => task.isDone)
+export const selectTaskById = (id: string) => (state: RootState) => state.task[id];
+
+const selectTasksArray = createSelector(selectAllTasks, (tasks) => Object.values(tasks));
+
+export const selectDoneTasks = createSelector(selectTasksArray, (tasks) =>
+  tasks.filter((task) => task.isDone)
 );
 
-export const selectTaskById = (state: RootState, id: string) => state.task[id];
-
-export const selectUndoneTasks = createSelector([(state: RootState) => state.task], (tasks) =>
-  Object.values(tasks).filter((task) => !task.isDone)
+export const selectUndoneTasks = createSelector(selectTasksArray, (tasks) =>
+  tasks.filter((task) => !task.isDone)
 );
 
-export const selectImportantTasks = createSelector([(state: RootState) => state.task], (tasks) =>
-  Object.values(tasks).filter((task) => task.isImportant)
+export const selectImportantTasks = createSelector(selectTasksArray, (tasks) =>
+  tasks.filter((task) => task.isImportant)
 );
 
-export const selectDailyTasks = createSelector([(state: RootState) => state.task], (tasks) =>
-  Object.values(tasks).filter((task) => isSameDate(task.toDateTimestamp))
+export const selectDailyTasks = createSelector(selectTasksArray, (tasks) =>
+  tasks.filter((task) => isSameDate(task.toDateTimestamp))
 );
 
 export const selectTasksByTimeFilter = createSelector(
-  [selectAllTasks, selectTimeFilter],
-  (tasks, timeFilter) => {
-    return filterTasksByTime(tasks, timeFilter);
-  }
+  [selectTasksArray, selectTimeFilter],
+  (tasks, timeFilter) => filterTasksByTime(tasks, timeFilter)
 );
 
-export const selectTasksByTitle = createSelector(
-  [selectTasksByTimeFilter, (state: RootState, title: string) => title],
-  (tasks, title) => Object.values(tasks).filter((t) => t.title.includes(title))
+export const selectTasksLengthByTimeFilter = createSelector(
+  [selectTasksByTimeFilter],
+  (tasks) => tasks.length
 );
 
-export const selectTasksByCategory = createSelector(
-  [selectTasksByTimeFilter, (state: RootState, category: string) => category],
-  (tasks, category) => Object.values(tasks).filter((t) => t.category === category)
-);
+export const selectTasksByTitle = (title: string) =>
+  createSelector([selectTasksByTimeFilter], (tasks) =>
+    tasks.filter((task) => task.title.includes(title))
+  );
 
-export const selectTasksLengthByCategory = createSelector(
-  selectTasksByCategory,
-  (taskByCategory) => taskByCategory.length
-);
+export const selectTasksByCategory = (category: string) =>
+  createSelector([selectTasksByTimeFilter], (tasks) =>
+    tasks.filter((task) => task.category === category)
+  );
 
-export const selectDoneTasksByCategory = createSelector(selectTasksByCategory, (taskByCategory) =>
-  taskByCategory.filter((task) => task.isDone)
-);
+export const selectTasksLengthByCategory = (category: string) =>
+  createSelector(selectTasksByCategory(category), (tasksByCategory) => tasksByCategory.length);
 
-export const selectUndoneTasksByCategory = createSelector(selectTasksByCategory, (taskByCategory) =>
-  taskByCategory.filter((task) => !task.isDone)
-);
+export const selectDoneTasksByCategory = (category: string) =>
+  createSelector(selectTasksByCategory(category), (tasksByCategory) =>
+    tasksByCategory.filter((task) => task.isDone)
+  );
+
+export const selectUndoneTasksByCategory = (category: string) =>
+  createSelector(selectTasksByCategory(category), (tasksByCategory) =>
+    tasksByCategory.filter((task) => !task.isDone)
+  );

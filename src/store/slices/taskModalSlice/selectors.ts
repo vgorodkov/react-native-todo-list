@@ -1,5 +1,7 @@
 import { RootState } from '@/store/types';
 
+export const selectTaskModalTask = (state: RootState) => state.taskModal.task;
+
 export const selectTaskModalToDateTimestamp = (state: RootState) =>
   state.taskModal.task.toDateTimestamp;
 

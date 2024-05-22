@@ -10,7 +10,7 @@ import { ByTitleTasksScreenProps } from './types';
 export const ByTitleTasksScreen = ({ route }: ByTitleTasksScreenProps) => {
   const { taskQuery } = route.params;
 
-  const byTitleTasks = useAppSelector((state) => selectTasksByTitle(state, taskQuery));
+  const byTitleTasks = useAppSelector(selectTasksByTitle(taskQuery));
 
   return (
     <ListGradientWrapper>

@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { deleteTask } from '@/store/slices/taskSlice';
+import { selectTaskById } from '@/store/slices/taskSlice/selectors';
 
 import { styles } from './styles';
 import { TaskMenuProps } from './types';
@@ -12,7 +13,7 @@ export const TaskMenu = ({ id, closeTaskMenu }: TaskMenuProps) => {
   const dispatch = useAppDispatch();
 
   const navigation = useNavigation();
-  const selectedTask = useAppSelector((state) => state.task[id]);
+  const selectedTask = useAppSelector(selectTaskById(id));
 
   const { isDone } = selectedTask;
 
