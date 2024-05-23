@@ -19,3 +19,10 @@ export type MainStackParamList = {
     timeFilter: TimeFilter;
   };
 };
+
+export type DrawerParamList = {
+  Main: undefined;
+  DailyTasks: undefined;
+  ImportantTasks: undefined;
+  DoneTasks: undefined;
+};
