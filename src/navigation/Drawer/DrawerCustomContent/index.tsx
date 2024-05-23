@@ -14,7 +14,12 @@ export const DrawerCustomContent = (props: DrawerContentComponentProps) => {
 
   return (
     <DrawerContentScrollView {...props}>
-      <DrawerItem icon={DrawerCloseIcon} label="Close" onPress={closeDrawer} />
+      <DrawerItem
+        icon={DrawerCloseIcon}
+        label="Close"
+        onPress={closeDrawer}
+        testID="Drawer.CloseBtn"
+      />
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
   );
