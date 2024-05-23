@@ -15,7 +15,11 @@ export const TimerangeRow = ({ label, time, onPress, errorText }: TimerangeRowPr
           <Text>{label}</Text>
           <Text variant={TextVariant.label_large}>{time}</Text>
         </View>
-        <Button variant="text" onPress={onPress}>
+        <Button
+          testID={`TaskModal.TimerangeStep.Change${label}Time`}
+          variant="text"
+          onPress={onPress}
+        >
           Change
         </Button>
       </View>

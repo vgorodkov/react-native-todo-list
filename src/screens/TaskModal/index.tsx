@@ -38,7 +38,7 @@ export const TaskModal = ({ route }: TaskModalProps) => {
   }, [task, dispatch]);
 
   return (
-    <Modal style={{ height: MODAL_HEIGHT, width: MODAL_WIDTH }}>
+    <Modal style={{ height: MODAL_HEIGHT, width: MODAL_WIDTH }} testID="TaskModal">
       <Header title={task ? 'Edit task' : 'Create task'} />
       <FormProvider {...methods}>
         <StepList initialStep={initialStep} category={category} task={task}>

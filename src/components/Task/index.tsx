@@ -19,6 +19,7 @@ export const Task = memo(({ title, description, isDone, subtasks, timeRange, id 
 
   return (
     <Animated.View
+      testID={`Task.${title}`}
       layout={LinearTransition}
       exiting={SlideOutRight}
       entering={SlideInLeft}

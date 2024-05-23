@@ -18,6 +18,7 @@ export const TimeFilter = ({ title, isSelected }: TimeFilterProps) => {
 
   return (
     <Pressable
+      testID={`Main.Timefilter_${title}`}
       onPress={onTimeFilterPress}
       style={[styles.timeFilter, isSelected && styles.activeTimeFilter]}
     >

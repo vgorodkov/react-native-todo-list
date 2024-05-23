@@ -18,11 +18,11 @@ export const SelectedSubtask = ({ title, index, id }: SelectedSubtaskProps) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={`TaskModal.SubtaskStep.${title}`}>
       <Text variant={TextVariant.body_large} style={commonStyles.fullSize}>
         {index + 1}. {title}
       </Text>
-      <Pressable onPress={onDeleteBtnPress}>
+      <Pressable onPress={onDeleteBtnPress} testID={`TaskModal.SubtaskStep.${title}.DeleteBtn`}>
         <Image source={require('@/assets/icons/delete.png')} style={styles.deleteIcon} />
       </Pressable>
     </View>

@@ -5,7 +5,7 @@ import Animated, { useDerivedValue, withSpring } from 'react-native-reanimated';
 import { styles } from './styles';
 import { CategoryColorProps } from './types';
 
-export const CategoryColor = ({ color, isSelected, selectColor }: CategoryColorProps) => {
+export const CategoryColor = ({ color, isSelected, selectColor, index }: CategoryColorProps) => {
   const colorScale = useDerivedValue(() => {
     if (isSelected) {
       return withSpring(1.2);
@@ -25,7 +25,7 @@ export const CategoryColor = ({ color, isSelected, selectColor }: CategoryColorP
   };
 
   return (
-    <Pressable onPress={onCategoryColorPress}>
+    <Pressable testID={`Main.CategoryColor${index}`} onPress={onCategoryColorPress}>
       <Animated.View
         style={[
           styles.color,

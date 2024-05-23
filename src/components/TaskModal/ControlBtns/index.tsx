@@ -68,10 +68,10 @@ export const ControlBtns = ({
 
   return (
     <View style={styles.controlBtns}>
-      <Button onPress={onBackBtnPress} variant="text">
+      <Button testID="TaskModal.ControlBackBtn" onPress={onBackBtnPress} variant="text">
         {currentStep === 0 ? 'Close' : 'Back'}
       </Button>
-      <Button onPress={onNextBtnPress} variant="text">
+      <Button testID="TaskModal.ControlNextBtn" onPress={onNextBtnPress} variant="text">
         {currentStep === MODAL_STEPS - 1 ? 'Submit' : 'Next'}
       </Button>
     </View>
