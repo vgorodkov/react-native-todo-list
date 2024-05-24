@@ -1,11 +1,11 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
-import { MainStackParamList } from '@/types/navigation';
+import { RootStackParamList } from '@/types/navigation';
 import { getHeaderTitleByTimeFilter } from '@/utils/getHeaderTitleByTimeFilter';
 
 export type Props = {
-  route: RouteProp<MainStackParamList, keyof MainStackParamList>;
+  route: RouteProp<RootStackParamList, keyof RootStackParamList>;
 };
 
 export const stackNavigatorOptions = { headerShown: false };

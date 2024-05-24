@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { MainStackParamList } from '@/types/navigation';
+import { RootStackParamList } from '@/types/navigation';
 
-export type TaskModalProps = NativeStackScreenProps<MainStackParamList, 'TaskModal'>;
+export type TaskModalProps = NativeStackScreenProps<RootStackParamList, 'TaskModal'>;
