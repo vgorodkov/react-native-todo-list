@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 
 import { CategoriesList } from '@/components/CategoriesList';
 import { TaskSearchbar } from '@/components/TaskSearchbar';
@@ -25,12 +25,12 @@ export const MainScreen = () => {
         rightEllipsisSize={rightEllipsisSize}
         rightGradientStops={rightGradientStops}
       />
-      <View style={styles.container}>
+      <KeyboardAvoidingView behavior="height" style={styles.container}>
         <TaskTodayInfo />
         <TaskSearchbar />
         <TimeFiltersRow />
         <CategoriesList />
-      </View>
+      </KeyboardAvoidingView>
     </>
   );
 };
