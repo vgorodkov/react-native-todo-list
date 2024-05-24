@@ -1,15 +1,21 @@
-import React, { ReactNode } from 'react';
-import { View, ViewProps } from 'react-native';
+import React from 'react';
+import { Pressable, StyleSheet, View, ViewProps } from 'react-native';
+
+import { commonStyles } from '@/commonStyles';
 
 import { styles } from './styles';
 
 interface ModalProps extends ViewProps {
-  children: ReactNode;
+  onBackdropPress: () => void;
 }
 
-export const Modal = ({ children, style, ...props }: ModalProps) => {
+export const Modal = ({ onBackdropPress, children, style, ...props }: ModalProps) => {
   return (
-    <View style={styles.modalBackdrop}>
+    <View style={commonStyles.fullSizeCentered}>
+      <Pressable
+        style={[StyleSheet.absoluteFill, styles.modalBackdrop]}
+        onPress={onBackdropPress}
+      />
       <View style={[styles.modalContent, style]} {...props}>
         {children}
       </View>

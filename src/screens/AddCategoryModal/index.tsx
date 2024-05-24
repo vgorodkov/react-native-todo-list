@@ -38,7 +38,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
   };
 
   return (
-    <Modal style={styles.modalContainer}>
+    <Modal onBackdropPress={closeModal} style={styles.modalContainer}>
       <Input
         testID="Main.CategoryInput"
         value={categoryTitle}

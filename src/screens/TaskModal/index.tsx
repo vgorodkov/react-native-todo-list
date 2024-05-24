@@ -12,7 +12,7 @@ import { setInitialState } from '@/store/slices/taskModalSlice';
 import { TaskModalProps } from './types';
 import { validationSchema } from './validationSchema';
 
-export const TaskModal = ({ route }: TaskModalProps) => {
+export const TaskModal = ({ route, navigation }: TaskModalProps) => {
   const { task, initialStep, category } = route.params;
 
   const dispatch = useAppDispatch();
@@ -37,8 +37,16 @@ export const TaskModal = ({ route }: TaskModalProps) => {
     }
   }, [task, dispatch]);
 
+  const closeModal = () => {
+    navigation.goBack();
+  };
+
   return (
-    <Modal style={{ height: MODAL_HEIGHT, width: MODAL_WIDTH }} testID="TaskModal">
+    <Modal
+      onBackdropPress={closeModal}
+      style={{ height: MODAL_HEIGHT, width: MODAL_WIDTH }}
+      testID="TaskModal"
+    >
       <Header title={task ? 'Edit task' : 'Create task'} />
       <FormProvider {...methods}>
         <StepList initialStep={initialStep} category={category} task={task}>
