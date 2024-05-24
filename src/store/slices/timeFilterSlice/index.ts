@@ -4,11 +4,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { TimeFilter } from '@/types/timefilter';
 
 interface TimeFilterState {
-  selected: TimeFilter;
+  selectedTimefilter: TimeFilter;
 }
 
 const initialState: TimeFilterState = {
-  selected: 'Today',
+  selectedTimefilter: 'Today',
 };
 
 export const timeFilterSlice = createSlice({
@@ -16,7 +16,7 @@ export const timeFilterSlice = createSlice({
   initialState,
   reducers: {
     setTimeFilter: (state, action: PayloadAction<TimeFilter>) => {
-      state.selected = action.payload;
+      state.selectedTimefilter = action.payload;
     },
   },
 });
