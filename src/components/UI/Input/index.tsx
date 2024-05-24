@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import { Image, TextInput, View } from 'react-native';
 
 import { colors } from '@/constants/colors';
-import { spacing } from '@/constants/spacing';
 
 import { Text } from '../Text';
 import { TextVariant } from '../Text/types';
@@ -12,7 +11,7 @@ import { InputProps } from './types';
 export const Input = forwardRef<TextInput, InputProps>(
   ({ icon, label, errorMessage, ...props }, ref) => {
     return (
-      <View style={{ gap: spacing.s }}>
+      <View style={styles.container}>
         {label && (
           <Text variant={TextVariant.label_large} color={colors.primaryText}>
             {label}

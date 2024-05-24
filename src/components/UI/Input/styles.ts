@@ -1,8 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+import { commonStyles } from '@/commonStyles';
 import { spacing } from '@/constants/spacing';
 
 export const styles = StyleSheet.create({
+  container: {
+    gap: spacing.s,
+  },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -11,11 +15,7 @@ export const styles = StyleSheet.create({
     borderRadius: 4,
     gap: spacing.s,
     backgroundColor: 'white',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 4,
+    ...commonStyles.shadow,
   },
   input: {
     flex: 1,
