@@ -1,6 +1,7 @@
 import { ViewProps } from 'react-native';
 
 export interface AddIconProps extends ViewProps {
-  onAddIconPress: () => void;
+  onIconPress: () => void;
   size?: number;
+  icon: number;
 }

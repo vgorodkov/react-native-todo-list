@@ -1,9 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 
+import { commonStyles } from '@/commonStyles';
 import { ListGradientWrapper } from '@/components/ListGradientWrapper';
 import { TaskListWithDone } from '@/components/TaskListWIthDone';
-import { AddIcon } from '@/components/UI/AddIcon';
+import { Icon } from '@/components/UI/Icon';
 import { useAppSelector } from '@/store/hooks';
 import {
   selectDoneTasksByCategory,
@@ -29,7 +30,12 @@ export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenPr
     <ListGradientWrapper>
       <TaskListWithDone doneTasks={doneTasks} undoneTasks={undoneTasks} />
       <View style={styles.addTodosContainer}>
-        <AddIcon testID="Task.AddIcon" onAddIconPress={onAddIconPress} />
+        <Icon
+          style={commonStyles.addIcon}
+          icon={require('@/assets/icons/todo_plus.png')}
+          testID="Task.AddIcon"
+          onIconPress={onAddIconPress}
+        />
       </View>
     </ListGradientWrapper>
   );
