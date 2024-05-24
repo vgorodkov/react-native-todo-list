@@ -9,7 +9,7 @@ import { selectTasksLengthByTimeFilter } from '@/store/slices/taskSlice/selector
 import { selectTimeFilter } from '@/store/slices/timeFilterSlice/selectors';
 import { formatTimeFilterTitle } from '@/utils/formatTimeFilterTilte';
 
-import { FIRST_PART_INFO, SECOND_PART_INFO, TODAY_DATE } from './constants';
+import { TODAY_DATE } from './constants';
 import { styles } from './styles';
 
 export const TaskTodayInfo = () => {
@@ -19,9 +19,9 @@ export const TaskTodayInfo = () => {
   return (
     <View style={styles.container}>
       <Text variant={TextVariant.title_small} color={colors.primaryText}>
-        {FIRST_PART_INFO}
+        you have
         <Text variant={TextVariant.title_medium} color={colors.onPrimary}>
-          {tasksLengthByTimeFilter} {SECOND_PART_INFO}
+          {tasksLengthByTimeFilter} tasks
         </Text>
         {formatTimeFilterTitle(timeFilter)}
       </Text>
