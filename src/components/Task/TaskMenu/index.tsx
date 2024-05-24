@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { RootStackRoutes } from '@/constants/navigation';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { deleteTask } from '@/store/slices/taskSlice';
 import { selectTaskById } from '@/store/slices/taskSlice/selectors';
@@ -25,7 +26,7 @@ export const TaskMenu = ({ id, closeTaskMenu }: TaskMenuProps) => {
   const onEditTaskBtn = () => {
     closeTaskMenu();
 
-    navigation.navigate('TaskModal', {
+    navigation.navigate(RootStackRoutes.TASK_MODAL, {
       category: selectedTask.category,
       task: selectedTask,
     });
@@ -33,7 +34,7 @@ export const TaskMenu = ({ id, closeTaskMenu }: TaskMenuProps) => {
 
   const onAddSubtasksBtn = () => {
     closeTaskMenu();
-    navigation.navigate('TaskModal', {
+    navigation.navigate(RootStackRoutes.TASK_MODAL, {
       category: selectedTask.category,
       task: selectedTask,
       initialStep: 1,

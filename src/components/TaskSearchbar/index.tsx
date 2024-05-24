@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { View } from 'react-native';
 
+import { RootStackRoutes } from '@/constants/navigation';
 import { useAppSelector } from '@/store/hooks';
 import { selectTimeFilter } from '@/store/slices/timeFilterSlice/selectors';
 
@@ -15,7 +16,7 @@ export const TaskSearchbar = () => {
   const [taskQuery, setTaskQuery] = useState('');
 
   const onSubmit = () => {
-    navigation.navigate('ByTitleTasks', { taskQuery, timeFilter });
+    navigation.navigate(RootStackRoutes.BY_TITLE_TASKS, { taskQuery, timeFilter });
     setTaskQuery('');
   };
 

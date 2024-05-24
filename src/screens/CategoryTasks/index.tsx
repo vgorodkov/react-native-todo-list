@@ -5,6 +5,7 @@ import { commonStyles } from '@/commonStyles';
 import { ListGradientWrapper } from '@/components/ListGradientWrapper';
 import { TaskListWithDone } from '@/components/TaskListWIthDone';
 import { Icon } from '@/components/UI/Icon';
+import { RootStackRoutes } from '@/constants/navigation';
 import { useAppSelector } from '@/store/hooks';
 import {
   selectDoneTasksByCategory,
@@ -21,7 +22,7 @@ export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenPr
   const undoneTasks = useAppSelector(selectUndoneTasksByCategory(category));
 
   const onAddIconPress = () => {
-    navigation.navigate('TaskModal', {
+    navigation.navigate(RootStackRoutes.TASK_MODAL, {
       category,
     });
   };
