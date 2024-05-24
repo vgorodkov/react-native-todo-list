@@ -1,13 +1,10 @@
 import React from 'react';
-import { Pressable, StyleSheet, View, ViewProps } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { commonStyles } from '@/commonStyles';
 
 import { styles } from './styles';
-
-interface ModalProps extends ViewProps {
-  onBackdropPress: () => void;
-}
+import { ModalProps } from './types';
 
 export const Modal = ({ onBackdropPress, children, style, ...props }: ModalProps) => {
   return (
