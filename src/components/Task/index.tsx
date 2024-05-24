@@ -36,16 +36,19 @@ export const Task = memo(({ title, description, isDone, subtasks, timeRange, id 
       />
       {isSubtasksShown && (
         <View style={styles.subtaskContainer}>
-          {subtasks?.map((subtask, index) => (
-            <Subtask
-              index={index}
-              taskId={id}
-              key={subtask.id}
-              title={subtask.title}
-              id={subtask.id}
-              isDone={subtask.isDone}
-            />
-          ))}
+          {subtasks?.map((subtask, index) => {
+            const { id: subtaskId, title: subtaskTitle, isDone: subtaskIsDone } = subtask;
+            return (
+              <Subtask
+                index={index}
+                taskId={id}
+                key={subtaskId}
+                title={subtaskTitle}
+                id={subtaskId}
+                isDone={subtaskIsDone}
+              />
+            );
+          })}
         </View>
       )}
     </Animated.View>
