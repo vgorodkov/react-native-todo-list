@@ -19,9 +19,9 @@ export const TaskTodayInfo = () => {
   return (
     <View style={styles.container}>
       <Text variant={TextVariant.title_small} color={colors.primaryText}>
-        you have
+        you have{' '}
         <Text variant={TextVariant.title_medium} color={colors.onPrimary}>
-          {tasksLengthByTimeFilter} tasks
+          {tasksLengthByTimeFilter} tasks{' '}
         </Text>
         {formatTimeFilterTitle(timeFilter)}
       </Text>
