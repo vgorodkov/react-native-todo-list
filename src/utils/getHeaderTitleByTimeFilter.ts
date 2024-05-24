@@ -1,14 +1,11 @@
 import { TimeFilter } from '@/types/timefilter';
 
+const titlesByTimeFilter: Record<TimeFilter, string> = {
+  Today: "Today's tasks",
+  Week: "Week's tasks",
+  Month: "Month's tasks",
+};
+
 export const getHeaderTitleByTimeFilter = (timeFilter: TimeFilter) => {
-  switch (timeFilter) {
-    case 'Today':
-      return "Today's tasks";
-    case 'Week':
-      return "Week's tasks";
-    case 'Month':
-      return "Month's tasks";
-    default:
-      return 'Tasks';
-  }
+  return titlesByTimeFilter[timeFilter];
 };
