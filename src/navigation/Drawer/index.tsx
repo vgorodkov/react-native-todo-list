@@ -14,21 +14,27 @@ import {
   drawerNavigatorOptions,
 } from './options';
 
-const Drawer = createDrawerNavigator<DrawerParamList>();
+const DrawerNavigator = createDrawerNavigator<DrawerParamList>();
 
 export const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator screenOptions={drawerNavigatorOptions} drawerContent={DrawerCustomContent}>
-      <Drawer.Screen
+    <DrawerNavigator.Navigator
+      screenOptions={drawerNavigatorOptions}
+      drawerContent={DrawerCustomContent}
+    >
+      <DrawerNavigator.Screen
         name={DrawerRoutes.MAIN}
         component={MainScreen}
         options={drawerMainScreenOptions}
       />
-      <Drawer.Group screenOptions={drawerGroupScreenOptions}>
-        <Drawer.Screen name={DrawerRoutes.DAILY_TASKS} component={DailyTasksScreen} />
-        <Drawer.Screen name={DrawerRoutes.IMPORTANT_TASKS} component={ImportantTasksScreen} />
-        <Drawer.Screen name={DrawerRoutes.DONE_TASKS} component={DoneTasksScreen} />
-      </Drawer.Group>
-    </Drawer.Navigator>
+      <DrawerNavigator.Group screenOptions={drawerGroupScreenOptions}>
+        <DrawerNavigator.Screen name={DrawerRoutes.DAILY_TASKS} component={DailyTasksScreen} />
+        <DrawerNavigator.Screen
+          name={DrawerRoutes.IMPORTANT_TASKS}
+          component={ImportantTasksScreen}
+        />
+        <DrawerNavigator.Screen name={DrawerRoutes.DONE_TASKS} component={DoneTasksScreen} />
+      </DrawerNavigator.Group>
+    </DrawerNavigator.Navigator>
   );
 };
