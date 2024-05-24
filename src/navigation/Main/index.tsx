@@ -18,16 +18,16 @@ export const MainNavigation = () => {
     <StackNavigator.Navigator screenOptions={stackNavigatorOptions}>
       <StackNavigator.Screen name={RootStackRoutes.ONBOARDING} component={OnboardingScreen} />
       <StackNavigator.Screen name={RootStackRoutes.DRAWER} component={DrawerNavigation} />
-      <StackNavigator.Group screenOptions={headerTitleByParams}>
-        <StackNavigator.Screen
-          name={RootStackRoutes.CATEGORY_TASKS}
-          component={CategoryTasksScreen}
-        />
-        <StackNavigator.Screen
-          name={RootStackRoutes.BY_TITLE_TASKS}
-          component={ByTitleTasksScreen}
-        />
-      </StackNavigator.Group>
+      <StackNavigator.Screen
+        options={headerTitleByParams}
+        name={RootStackRoutes.CATEGORY_TASKS}
+        component={CategoryTasksScreen}
+      />
+      <StackNavigator.Screen
+        options={headerTitleByParams}
+        name={RootStackRoutes.BY_TITLE_TASKS}
+        component={ByTitleTasksScreen}
+      />
       <StackNavigator.Group screenOptions={stackModalScreensOptions}>
         <StackNavigator.Screen
           name={RootStackRoutes.ADD_CATEGORY_MODAL}
