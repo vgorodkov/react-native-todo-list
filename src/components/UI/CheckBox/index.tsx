@@ -10,7 +10,7 @@ import Animated, {
 import { styles } from './styles';
 import { CheckBoxProps } from './types';
 
-export const Checkbox = ({ isDone, onPress }: CheckBoxProps) => {
+export const Checkbox = ({ isDone, onPress, ...props }: CheckBoxProps) => {
   const checkboxScale = useSharedValue(1);
 
   const checkboxAnimatedStyle = useAnimatedStyle(() => {
@@ -25,7 +25,7 @@ export const Checkbox = ({ isDone, onPress }: CheckBoxProps) => {
   };
 
   return (
-    <Pressable onPress={toggleCheckbox}>
+    <Pressable onPress={toggleCheckbox} {...props}>
       <Animated.View style={[styles.checkbox, checkboxAnimatedStyle]}>
         {isDone && (
           <Image style={styles.checkboxTickIcon} source={require('@/assets/icons/tick.png')} />

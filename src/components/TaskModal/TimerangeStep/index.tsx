@@ -65,6 +65,7 @@ export const TimerangeStep = () => {
         errorText={errors.timeRange?.to?.message}
       />
       <DatePicker
+        testID="TaskModal.TimerangeStep.TimeInput"
         modal
         open={isOpen}
         mode="time"

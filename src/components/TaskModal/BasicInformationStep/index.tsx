@@ -27,6 +27,7 @@ export const BasicInformationStep = () => {
   return (
     <ListItem style={styles.container}>
       <Input
+        testID="TaskModal.BasicStep.TitleInput"
         {...register('title')}
         value={title}
         onChangeText={handleTitleChange}
@@ -34,6 +35,7 @@ export const BasicInformationStep = () => {
         errorMessage={errors.title?.message}
       />
       <Input
+        testID="TaskModal.BasicStep.DescriptionInput"
         {...register('description')}
         value={description}
         onChangeText={handleDescriptionChange}

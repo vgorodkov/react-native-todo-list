@@ -10,6 +10,7 @@ import { TaskListProps } from './types';
 export const TaskList = ({ tasks }: TaskListProps) => {
   return (
     <Animated.FlatList
+      testID="TaskList"
       ListEmptyComponent={<EmptyList message="No tasks yet" />}
       showsVerticalScrollIndicator={false}
       data={tasks}

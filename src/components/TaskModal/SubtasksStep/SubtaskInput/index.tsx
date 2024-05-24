@@ -45,6 +45,7 @@ export const SubtaskInput = () => {
     <View style={styles.inputContainer}>
       <View style={commonStyles.fullSize}>
         <Input
+          testID="TaskModal.SubtaskStep.SubtaskInput"
           {...register('subtask')}
           value={subtaskInput}
           onSubmitEditing={handleSubtaskAdd}
@@ -53,7 +54,12 @@ export const SubtaskInput = () => {
           errorMessage={errors.subtask?.message}
         />
       </View>
-      <AddIcon style={styles.addIcon} size={24} onAddIconPress={handleSubtaskAdd} />
+      <AddIcon
+        testID="TaskModal.SubtaskStep.SubtaskAddIcon"
+        style={styles.addIcon}
+        size={24}
+        onAddIconPress={handleSubtaskAdd}
+      />
     </View>
   );
 };

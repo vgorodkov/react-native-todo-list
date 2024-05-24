@@ -46,6 +46,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
   return (
     <Modal style={styles.modalContainer}>
       <Input
+        testID="Main.CategoryInput"
         value={categoryTitle}
         onChangeText={setCategoryTitle}
         maxLength={CATEGORY_TITLE_LIMIT}
@@ -56,8 +57,9 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
         {AVAIBLE_COLORS}
       </Text>
       <View style={styles.avaibleColorsContainer}>
-        {avaibleColors.map((color) => (
+        {avaibleColors.map((color, index) => (
           <CategoryColor
+            index={index}
             selectColor={setSelectedColor}
             isSelected={color === selectedColor}
             key={color}
@@ -69,7 +71,12 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
         <Button variant="text" onPress={closeModal}>
           {CLOSE_BTN_TEXT}
         </Button>
-        <Button variant="text" disabled={!isInputValid} onPress={onAddCategoryBtnPress}>
+        <Button
+          testID="Main.CategoryAddBtn"
+          variant="text"
+          disabled={!isInputValid}
+          onPress={onAddCategoryBtnPress}
+        >
           {ADD_BTN_TEXT}
         </Button>
       </View>

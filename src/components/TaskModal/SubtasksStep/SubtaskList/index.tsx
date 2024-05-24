@@ -15,6 +15,7 @@ export const SubtaskList = () => {
   return (
     <View style={commonStyles.fullSize}>
       <FlatList
+        testID="TaskModal.SubtaskStep.SubtasksList"
         data={selectedSubtasks}
         renderItem={renderSelectedSubtasks}
         contentContainerStyle={styles.listContentContainerStyle}

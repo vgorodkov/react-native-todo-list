@@ -22,6 +22,7 @@ export const TaskSearchbar = () => {
   return (
     <View>
       <Input
+        testID="Main.Searchbar"
         onSubmitEditing={onSubmit}
         onChangeText={setTaskQuery}
         value={taskQuery}

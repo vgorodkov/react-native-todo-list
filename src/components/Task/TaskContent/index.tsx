@@ -43,7 +43,12 @@ export const TaskContent = ({
   };
 
   return (
-    <Pressable disabled={disabled} onPress={onTaskPress} style={styles.task}>
+    <Pressable
+      testID={`Task.${title}.ExpandBtn`}
+      disabled={disabled}
+      onPress={onTaskPress}
+      style={styles.task}
+    >
       <View style={styles.timeRange}>
         <Text color={colors.primaryText} variant={TextVariant.label_small}>
           {getTimeFromISO(timeRange.from)}
@@ -52,7 +57,7 @@ export const TaskContent = ({
           {getTimeFromISO(timeRange.to)}
         </Text>
       </View>
-      <Checkbox isDone={isDone} onPress={onCheckBoxPress} />
+      <Checkbox testID={`Task.${title}.Checkbox`} isDone={isDone} onPress={onCheckBoxPress} />
       <View style={styles.todoDescription}>
         <Text color={colors.primaryText} variant={TextVariant.body_large}>
           {title}
@@ -62,7 +67,7 @@ export const TaskContent = ({
         </Text>
       </View>
       {isTaskMenuShown && <TaskMenu closeTaskMenu={closeTaskMenu} id={id} />}
-      <Pressable onPress={onTaskMenuToggleBtn}>
+      <Pressable testID={`Task.${title}.MenuBtn`} onPress={onTaskMenuToggleBtn}>
         <Image style={styles.taskMenuToggleBtn} source={require('@/assets/icons/more.png')} />
       </Pressable>
     </Pressable>

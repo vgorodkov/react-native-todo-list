@@ -15,8 +15,12 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image style={styles.welcomeImg} source={require('@/assets/imgs/welcome.png')} />
+    <View style={styles.container} testID="Onboarding">
+      <Image
+        style={styles.welcomeImg}
+        source={require('@/assets/imgs/welcome.png')}
+        testID="Onboarding.Main_img"
+      />
       <View style={styles.appInfo}>
         <Text color={colors.primaryText} variant={TextVariant.title_medium}>
           {APP_TITLE}
@@ -29,7 +33,9 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
           {APP_DESCRIPTION}
         </Text>
       </View>
-      <Button onPress={onStartBtnPress}>{BTN_TEXT}</Button>
+      <Button onPress={onStartBtnPress} testID="Onboarding.StartBtn">
+        {BTN_TEXT}
+      </Button>
     </View>
   );
 };

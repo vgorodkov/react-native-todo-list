@@ -26,7 +26,11 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
   };
 
   return (
-    <Pressable onPress={onTaskCategoryCardPress} style={[styles.taskCategory, { backgroundColor }]}>
+    <Pressable
+      testID={`Main.TaskCategory${title}`}
+      onPress={onTaskCategoryCardPress}
+      style={[styles.taskCategory, { backgroundColor }]}
+    >
       <Text
         variant={TextVariant.label_large}
         style={styles.taskAmountBadge}

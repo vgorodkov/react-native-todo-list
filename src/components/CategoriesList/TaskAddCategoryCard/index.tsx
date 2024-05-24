@@ -8,6 +8,7 @@ export const TaskAddCategoryCard = () => {
 
   return (
     <Pressable
+      testID="Main.TaskAddCategory"
       style={styles.addTaskCategory}
       onPress={() => {
         navigation.navigate('AddCategoryModal');

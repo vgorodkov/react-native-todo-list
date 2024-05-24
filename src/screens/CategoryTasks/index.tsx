@@ -29,7 +29,7 @@ export const CategoryTasksScreen = ({ route, navigation }: CategoryTasksScreenPr
     <ListGradientWrapper>
       <TaskListWithDone doneTasks={doneTasks} undoneTasks={undoneTasks} />
       <View style={styles.addTodosContainer}>
-        <AddIcon onAddIconPress={onAddIconPress} />
+        <AddIcon testID="Task.AddIcon" onAddIconPress={onAddIconPress} />
       </View>
     </ListGradientWrapper>
   );

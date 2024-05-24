@@ -20,6 +20,7 @@ export const DateStep = memo(() => {
   return (
     <ListItem style={commonStyles.centeredView}>
       <DatePicker
+        testID="TaskModal.DateStep.DateInput"
         minimumDate={new Date(Date.now())}
         mode="date"
         date={date}
