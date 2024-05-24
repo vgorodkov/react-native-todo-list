@@ -6,11 +6,12 @@ import { Header } from '@/components/TaskModal';
 import { StepList } from '@/components/TaskModal/StepList';
 import { Modal } from '@/components/UI/Modal';
 import { MODAL_HEIGHT, MODAL_WIDTH, taskModalSteps } from '@/constants/task';
+import { getDefaultValues } from '@/forms/taskModal/defaultValues';
+import { validationSchema } from '@/forms/taskModal/validationSchema';
 import { useAppDispatch } from '@/store/hooks';
 import { setInitialState } from '@/store/slices/taskModalSlice';
 
 import { TaskModalProps } from './types';
-import { validationSchema } from './validationSchema';
 
 export const TaskModal = ({ route, navigation }: TaskModalProps) => {
   const { task, initialStep, category } = route.params;
@@ -19,15 +20,7 @@ export const TaskModal = ({ route, navigation }: TaskModalProps) => {
 
   const methods = useForm({
     resolver: yupResolver(validationSchema),
-    defaultValues: {
-      title: task?.title ?? '',
-      description: task?.description ?? '',
-      subtask: '',
-      timeRange: {
-        from: new Date(task?.timeRange.from ?? Date.now()),
-        to: new Date(task?.timeRange.to ?? Date.now()),
-      },
-    },
+    defaultValues: getDefaultValues(task),
   });
 
   useEffect(() => {
