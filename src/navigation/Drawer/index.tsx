@@ -4,6 +4,7 @@ import { DailyTasksScreen } from '@/screens/DailyTasks';
 import { DoneTasksScreen } from '@/screens/DoneTasks';
 import { ImportantTasksScreen } from '@/screens/ImportantTasks';
 import { MainScreen } from '@/screens/Main';
+import { DrawerParamList } from '@/types/navigation';
 
 import { DrawerCustomContent } from './DrawerCustomContent';
 import {
@@ -12,7 +13,7 @@ import {
   drawerNavigatorOptions,
 } from './options';
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
 export const DrawerNavigation = () => {
   return (
