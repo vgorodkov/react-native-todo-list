@@ -13,7 +13,7 @@ export const Input = forwardRef<TextInput, InputProps>(
     return (
       <View style={styles.container}>
         {label && (
-          <Text variant={TextVariant.label_large} color={colors.primaryText}>
+          <Text variant={TextVariant.LABEL_LARGE} color={colors.primaryText}>
             {label}
           </Text>
         )}
@@ -22,7 +22,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           <TextInput style={styles.input} {...props} ref={ref} />
         </View>
         {errorMessage && (
-          <Text variant={TextVariant.label_small} color="red">
+          <Text variant={TextVariant.LABEL_SMALL} color="red">
             {errorMessage}
           </Text>
         )}

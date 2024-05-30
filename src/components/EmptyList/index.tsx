@@ -9,7 +9,7 @@ import { TextVariant } from '../UI/Text/types';
 export const EmptyList = ({ message }: { message: string }) => {
   return (
     <View style={commonStyles.fullSizeCentered} testID="EmptyList">
-      <Text variant={TextVariant.label_large}>{message}</Text>
+      <Text variant={TextVariant.LABEL_LARGE}>{message}</Text>
     </View>
   );
 };

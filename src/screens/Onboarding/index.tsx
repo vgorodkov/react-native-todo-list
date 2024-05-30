@@ -23,11 +23,11 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
         testID="Onboarding.Main_img"
       />
       <View style={styles.appInfo}>
-        <Text color={colors.primaryText} variant={TextVariant.title_medium}>
+        <Text color={colors.primaryText} variant={TextVariant.TITLE_MEDIUM}>
           {APP_TITLE}
         </Text>
         <Text
-          variant={TextVariant.body_small}
+          variant={TextVariant.BODY_SMALL}
           style={styles.appDescription}
           color={colors.secondaryText}
         >

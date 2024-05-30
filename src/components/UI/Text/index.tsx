@@ -8,7 +8,7 @@ import { TextProps, TextVariant } from './types';
 
 export const Text = ({
   children,
-  variant = TextVariant.body_large,
+  variant = TextVariant.BODY_LARGE,
   style,
   color = colors.primaryText,
 }: TextProps) => {

@@ -47,7 +47,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
         placeholder="Write category name"
         label="Category name"
       />
-      <Text color={colors.primaryText} variant={TextVariant.label_large}>
+      <Text color={colors.primaryText} variant={TextVariant.LABEL_LARGE}>
         Avaible colors:
       </Text>
       <View style={styles.avaibleColorsContainer}>

@@ -1,21 +1,21 @@
 import { TextProps as RNTextProps } from 'react-native';
 
 export enum TextVariant {
-  title_medium = 'title_medium',
-  title_small = 'title_small',
-  body_large = 'body_large',
-  body_small = 'body_small',
-  label_large = 'label_large',
-  label_small = 'label_small',
+  TITLE_MEDIUM = 'title_medium',
+  TITLE_SMALL = 'title_small',
+  BODY_LARGE = 'body_large',
+  BODY_SMALL = 'body_small',
+  LABEL_LARGE = 'label_large',
+  LABEL_SMALL = 'label_small',
 }
 
 export interface TextProps extends RNTextProps {
   color?: string;
   variant?:
-    | TextVariant.title_medium
-    | TextVariant.title_small
-    | TextVariant.body_large
-    | TextVariant.body_small
-    | TextVariant.label_large
-    | TextVariant.label_small;
+    | TextVariant.TITLE_MEDIUM
+    | TextVariant.TITLE_SMALL
+    | TextVariant.BODY_LARGE
+    | TextVariant.BODY_SMALL
+    | TextVariant.LABEL_LARGE
+    | TextVariant.LABEL_SMALL;
 }

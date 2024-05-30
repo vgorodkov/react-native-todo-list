@@ -50,19 +50,19 @@ export const TaskContent = ({
       style={styles.task}
     >
       <View style={styles.timeRange}>
-        <Text color={colors.primaryText} variant={TextVariant.label_small}>
+        <Text color={colors.primaryText} variant={TextVariant.LABEL_SMALL}>
           {getTimeFromISO(timeRange.from)}
         </Text>
-        <Text color={colors.primaryText} variant={TextVariant.label_small}>
+        <Text color={colors.primaryText} variant={TextVariant.LABEL_SMALL}>
           {getTimeFromISO(timeRange.to)}
         </Text>
       </View>
       <Checkbox testID={`Task.${title}.Checkbox`} isDone={isDone} onPress={onCheckBoxPress} />
       <View style={styles.todoDescription}>
-        <Text color={colors.primaryText} variant={TextVariant.body_large}>
+        <Text color={colors.primaryText} variant={TextVariant.BODY_LARGE}>
           {title}
         </Text>
-        <Text color={colors.primaryText} variant={TextVariant.body_small}>
+        <Text color={colors.primaryText} variant={TextVariant.BODY_SMALL}>
           {description}
         </Text>
       </View>

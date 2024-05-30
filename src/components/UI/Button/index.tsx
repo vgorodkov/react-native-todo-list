@@ -21,7 +21,7 @@ export const Button = ({ children, variant = 'solid', ...props }: ButtonProps) =
       ]}
     >
       <Text
-        variant={TextVariant.label_large}
+        variant={TextVariant.LABEL_LARGE}
         color={disabled ? '#727272' : variant === 'solid' ? colors.onPrimary : colors.primary}
       >
         {children}
