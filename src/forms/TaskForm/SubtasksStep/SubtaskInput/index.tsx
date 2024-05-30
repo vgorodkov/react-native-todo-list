@@ -3,13 +3,13 @@ import { useFormContext, useWatch } from 'react-hook-form';
 import { View } from 'react-native';
 
 import { commonStyles } from '@/commonStyles';
-import { FormContext } from '@/components/TaskModal/types';
 import { Input } from '@/components/UI';
 import { Icon } from '@/components/UI/Icon';
 import { useAppDispatch } from '@/store/hooks';
 import { addSubtask } from '@/store/slices/taskModalSlice';
 import { TodoSubtaskDTO } from '@/types/todo';
 
+import { FormContext } from '../../types';
 import { styles } from './styles';
 
 export const SubtaskInput = () => {

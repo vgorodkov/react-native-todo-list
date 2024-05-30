@@ -9,7 +9,7 @@ import { selectTaskModalIsImportant } from '@/store/slices/taskModalSlice/select
 
 import { styles } from './styles';
 
-export const Header = ({ title }: { title: string }) => {
+export const TaskModalHeader = ({ title }: { title: string }) => {
   const dispatch = useAppDispatch();
 
   const isTaskImportant = useAppSelector(selectTaskModalIsImportant);

@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 
 import { MODAL_WIDTH } from '@/constants/task';
 
-import { ControlBtns } from '..';
+import { ControlBtns } from '../ControlBtns';
 import { StepListProps } from './types';
 
 export const StepList = ({ initialStep, category, task, children }: StepListProps) => {
