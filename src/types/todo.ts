@@ -24,3 +24,11 @@ export interface TodoTaskCategory {
   img: number;
   backgroundColor: string;
 }
+
+export interface TaskModalFormValues extends Pick<TodoTask, 'title' | 'description'> {
+  subtask: string;
+  timeRange: {
+    from: Date;
+    to: Date;
+  };
+}

@@ -1,30 +1,40 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { RootStackRoutes } from '@/constants/navigation';
 import { DrawerNavigation } from '@/navigation/Drawer';
 import { AddCategoryModal } from '@/screens/AddCategoryModal';
 import { ByTitleTasksScreen } from '@/screens/ByTitleTasks';
 import { CategoryTasksScreen } from '@/screens/CategoryTasks';
 import { OnboardingScreen } from '@/screens/Onboarding';
 import { TaskModal } from '@/screens/TaskModal';
-import { MainStackParamList } from '@/types/navigation';
+import { RootStackParamList } from '@/types/navigation';
 
-import { HeaderTitleByParams, StackModalScreensOptions, StackNavigatorOptions } from './options';
+import { headerTitleByParams, stackModalScreensOptions, stackNavigatorOptions } from './options';
 
-const Stack = createNativeStackNavigator<MainStackParamList>();
+const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 
 export const MainNavigation = () => {
   return (
-    <Stack.Navigator screenOptions={StackNavigatorOptions}>
-      <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-      <Stack.Screen name="Drawer" component={DrawerNavigation} />
-      <Stack.Group screenOptions={HeaderTitleByParams}>
-        <Stack.Screen name="CategoryTasks" component={CategoryTasksScreen} />
-        <Stack.Screen name="ByTitleTasks" component={ByTitleTasksScreen} />
-      </Stack.Group>
-      <Stack.Group screenOptions={StackModalScreensOptions}>
-        <Stack.Screen name="AddCategoryModal" component={AddCategoryModal} />
-        <Stack.Screen name="TaskModal" component={TaskModal} />
-      </Stack.Group>
-    </Stack.Navigator>
+    <StackNavigator.Navigator screenOptions={stackNavigatorOptions}>
+      <StackNavigator.Screen name={RootStackRoutes.ONBOARDING} component={OnboardingScreen} />
+      <StackNavigator.Screen name={RootStackRoutes.DRAWER} component={DrawerNavigation} />
+      <StackNavigator.Screen
+        options={headerTitleByParams}
+        name={RootStackRoutes.CATEGORY_TASKS}
+        component={CategoryTasksScreen}
+      />
+      <StackNavigator.Screen
+        options={headerTitleByParams}
+        name={RootStackRoutes.BY_TITLE_TASKS}
+        component={ByTitleTasksScreen}
+      />
+      <StackNavigator.Group screenOptions={stackModalScreensOptions}>
+        <StackNavigator.Screen
+          name={RootStackRoutes.ADD_CATEGORY_MODAL}
+          component={AddCategoryModal}
+        />
+        <StackNavigator.Screen name={RootStackRoutes.TASK_MODAL} component={TaskModal} />
+      </StackNavigator.Group>
+    </StackNavigator.Navigator>
   );
 };

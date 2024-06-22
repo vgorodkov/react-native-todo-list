@@ -24,7 +24,7 @@ export const TimeFilter = ({ title, isSelected }: TimeFilterProps) => {
     >
       <Text
         color={isSelected ? colors.onPrimary : colors.primaryText}
-        variant={TextVariant.label_large}
+        variant={TextVariant.LABEL_LARGE}
       >
         {title}
       </Text>

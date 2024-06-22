@@ -23,7 +23,7 @@ export const Subtask = ({ title, isDone, id, taskId, index }: SubtaskProps) => {
   return (
     <Animated.View style={styles.subTask} entering={FadeIn.delay(150 * index)}>
       <Checkbox isDone={isDone} onPress={onCheckboxPress} />
-      <Text color={colors.primaryText} variant={TextVariant.label_small}>
+      <Text color={colors.primaryText} variant={TextVariant.LABEL_SMALL}>
         {title}
       </Text>
     </Animated.View>

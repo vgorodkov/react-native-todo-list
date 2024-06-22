@@ -1,25 +1,23 @@
-import {
-  NativeStackNavigationOptions,
-  NativeStackScreenProps,
-} from '@react-navigation/native-stack';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
-import { MainStackParamList } from '@/types/navigation';
 import { getHeaderTitleByTimeFilter } from '@/utils/getHeaderTitleByTimeFilter';
 
-export type Props = NativeStackScreenProps<MainStackParamList, 'ByTitleTasks' | 'CategoryTasks'>;
+import { ScreensWithHeaderTitleProps } from './types';
 
-export const StackNavigatorOptions = { headerShown: false };
+export const stackNavigatorOptions = { headerShown: false };
 
-export const StackModalScreensOptions: NativeStackNavigationOptions = {
+export const stackModalScreensOptions: NativeStackNavigationOptions = {
   presentation: 'transparentModal',
   animation: 'fade',
 };
 
-export const HeaderTitleByParams: NativeStackNavigationOptions = ({ route }: Props) => ({
+export const headerTitleByParams = ({
+  route,
+}: ScreensWithHeaderTitleProps): NativeStackNavigationOptions => ({
   headerTitleAlign: 'center',
   headerShown: true,
   headerTransparent: true,
   headerTintColor: 'white',
   headerTitleStyle: { color: 'white' },
-  title: getHeaderTitleByTimeFilter(route.params?.timeFilter),
+  title: getHeaderTitleByTimeFilter(route.params.timeFilter),
 });

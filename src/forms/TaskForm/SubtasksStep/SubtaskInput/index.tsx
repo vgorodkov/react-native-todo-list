@@ -3,13 +3,13 @@ import { useFormContext, useWatch } from 'react-hook-form';
 import { View } from 'react-native';
 
 import { commonStyles } from '@/commonStyles';
-import { FormContext } from '@/components/TaskModal/types';
 import { Input } from '@/components/UI';
-import { AddIcon } from '@/components/UI/AddIcon';
+import { Icon } from '@/components/UI/Icon';
 import { useAppDispatch } from '@/store/hooks';
 import { addSubtask } from '@/store/slices/taskModalSlice';
 import { TodoSubtaskDTO } from '@/types/todo';
 
+import { FormContext } from '../../types';
 import { styles } from './styles';
 
 export const SubtaskInput = () => {
@@ -54,11 +54,12 @@ export const SubtaskInput = () => {
           errorMessage={errors.subtask?.message}
         />
       </View>
-      <AddIcon
+      <Icon
         testID="TaskModal.SubtaskStep.SubtaskAddIcon"
+        icon={require('@/assets/icons/todo_plus.png')}
         style={styles.addIcon}
         size={24}
-        onAddIconPress={handleSubtaskAdd}
+        onIconPress={handleSubtaskAdd}
       />
     </View>
   );

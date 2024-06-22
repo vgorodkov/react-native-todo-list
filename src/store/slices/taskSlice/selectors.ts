@@ -37,9 +37,13 @@ export const selectTasksLengthByTimeFilter = createSelector(
   (tasks) => tasks.length
 );
 
-export const selectTasksByTitle = (title: string) =>
+export const selectTasksByTitle = (titleQuery: string) =>
   createSelector([selectTasksByTimeFilter], (tasks) =>
-    tasks.filter((task) => task.title.includes(title))
+    tasks.filter(
+      ({ title, subtasks }) =>
+        title.includes(titleQuery) ||
+        subtasks.some(({ title: subtaskTitle }) => subtaskTitle.includes(titleQuery))
+    )
   );
 
 export const selectTasksByCategory = (category: string) =>

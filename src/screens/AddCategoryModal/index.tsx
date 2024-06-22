@@ -9,13 +9,7 @@ import { colors } from '@/constants/colors';
 import { useAppDispatch } from '@/store/hooks';
 import { addCategory } from '@/store/slices/categorySlice';
 
-import {
-  ADD_BTN_TEXT,
-  AVAIBLE_COLORS,
-  avaibleColors,
-  CATEGORY_TITLE_LIMIT,
-  CLOSE_BTN_TEXT,
-} from './constants';
+import { avaibleColors, CATEGORY_TITLE_LIMIT } from './constants';
 import { styles } from './styles';
 import { AddCategoryModalScreenProps } from './types';
 
@@ -44,7 +38,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
   };
 
   return (
-    <Modal style={styles.modalContainer}>
+    <Modal onBackdropPress={closeModal} style={styles.modalContainer}>
       <Input
         testID="Main.CategoryInput"
         value={categoryTitle}
@@ -53,8 +47,8 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
         placeholder="Write category name"
         label="Category name"
       />
-      <Text color={colors.primaryText} variant={TextVariant.label_large}>
-        {AVAIBLE_COLORS}
+      <Text color={colors.primaryText} variant={TextVariant.LABEL_LARGE}>
+        Avaible colors:
       </Text>
       <View style={styles.avaibleColorsContainer}>
         {avaibleColors.map((color, index) => (
@@ -69,7 +63,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
       </View>
       <View style={styles.footerBtnContainer}>
         <Button variant="text" onPress={closeModal}>
-          {CLOSE_BTN_TEXT}
+          Close
         </Button>
         <Button
           testID="Main.CategoryAddBtn"
@@ -77,7 +71,7 @@ export const AddCategoryModal = ({ navigation }: AddCategoryModalScreenProps) =>
           disabled={!isInputValid}
           onPress={onAddCategoryBtnPress}
         >
-          {ADD_BTN_TEXT}
+          Add
         </Button>
       </View>
     </Modal>

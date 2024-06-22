@@ -9,7 +9,7 @@ import { selectTaskModalIsImportant } from '@/store/slices/taskModalSlice/select
 
 import { styles } from './styles';
 
-export const Header = ({ title }: { title: string }) => {
+export const TaskModalHeader = ({ title }: { title: string }) => {
   const dispatch = useAppDispatch();
 
   const isTaskImportant = useAppSelector(selectTaskModalIsImportant);
@@ -21,7 +21,7 @@ export const Header = ({ title }: { title: string }) => {
   return (
     <View style={styles.container}>
       <View style={styles.empty} />
-      <Text variant={TextVariant.label_large}>{title}</Text>
+      <Text variant={TextVariant.LABEL_LARGE}>{title}</Text>
       <Pressable onPress={toggleTaskImportant}>
         <Image
           source={

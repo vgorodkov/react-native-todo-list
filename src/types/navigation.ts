@@ -1,7 +1,7 @@
 import { TimeFilter } from './timefilter';
 import { TodoTask } from './todo';
 
-export type MainStackParamList = {
+export type RootStackParamList = {
   Onboarding: undefined;
   Drawer: undefined;
   CategoryTasks: {

@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
 
+import { colors } from './constants/colors';
+import { spacing } from './constants/spacing';
+
 export const commonStyles = StyleSheet.create({
   fullSize: {
     flex: 1,
@@ -19,5 +22,10 @@ export const commonStyles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 4,
+  },
+  addIcon: {
+    backgroundColor: colors.primary,
+    padding: spacing.s,
+    borderRadius: 100,
   },
 });

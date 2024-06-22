@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import { MainStackParamList } from '@/types/navigation';
+import { RootStackParamList } from '@/types/navigation';
 
-export type ByTitleTasksScreenProps = NativeStackScreenProps<MainStackParamList, 'ByTitleTasks'>;
+export type ByTitleTasksScreenProps = NativeStackScreenProps<RootStackParamList, 'ByTitleTasks'>;

@@ -5,6 +5,7 @@ import { Image, Pressable } from 'react-native';
 import { Text } from '@/components/UI';
 import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
+import { RootStackRoutes } from '@/constants/navigation';
 import { useAppSelector } from '@/store/hooks';
 import { selectTasksLengthByCategory } from '@/store/slices/taskSlice/selectors';
 import { selectTimeFilter } from '@/store/slices/timeFilterSlice/selectors';
@@ -19,7 +20,7 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
   const tasksLength = useAppSelector(selectTasksLengthByCategory(title));
 
   const onTaskCategoryCardPress = () => {
-    navigation.navigate('CategoryTasks', {
+    navigation.navigate(RootStackRoutes.CATEGORY_TASKS, {
       category: title,
       timeFilter,
     });
@@ -32,14 +33,14 @@ export const TaskCategoryCard = ({ title, img, backgroundColor }: TaskCategoryPr
       style={[styles.taskCategory, { backgroundColor }]}
     >
       <Text
-        variant={TextVariant.label_large}
+        variant={TextVariant.LABEL_LARGE}
         style={styles.taskAmountBadge}
         color={colors.onPrimary}
       >
         {tasksLength}
       </Text>
       <Image style={styles.taskCategoryImg} source={img} />
-      <Text style={styles.taskText} variant={TextVariant.label_large} color={colors.onPrimary}>
+      <Text style={styles.taskText} variant={TextVariant.LABEL_LARGE} color={colors.onPrimary}>
         {title}
       </Text>
     </Pressable>

@@ -4,6 +4,7 @@ import { Text } from '@/components/UI';
 import { Button } from '@/components/UI/Button';
 import { TextVariant } from '@/components/UI/Text/types';
 import { colors } from '@/constants/colors';
+import { RootStackRoutes } from '@/constants/navigation';
 
 import { APP_DESCRIPTION, APP_TITLE, BTN_TEXT } from './constants';
 import { styles } from './styles';
@@ -11,7 +12,7 @@ import { OnboardingScreenProps } from './types';
 
 export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
   const onStartBtnPress = () => {
-    navigation.navigate('Drawer');
+    navigation.navigate(RootStackRoutes.DRAWER);
   };
 
   return (
@@ -22,11 +23,11 @@ export const OnboardingScreen = ({ navigation }: OnboardingScreenProps) => {
         testID="Onboarding.Main_img"
       />
       <View style={styles.appInfo}>
-        <Text color={colors.primaryText} variant={TextVariant.title_medium}>
+        <Text color={colors.primaryText} variant={TextVariant.TITLE_MEDIUM}>
           {APP_TITLE}
         </Text>
         <Text
-          variant={TextVariant.body_small}
+          variant={TextVariant.BODY_SMALL}
           style={styles.appDescription}
           color={colors.secondaryText}
         >

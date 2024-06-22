@@ -8,11 +8,12 @@ import { styles } from './styles';
 import { ButtonProps } from './types';
 
 export const Button = ({ children, variant = 'solid', ...props }: ButtonProps) => {
-  const { disabled } = props;
+  const { disabled, style } = props;
   return (
     <Pressable
       {...props}
       style={({ pressed }) => [
+        style,
         styles.btn,
         variant === 'solid' ? styles.solidBtn : styles.textBtn,
         pressed && styles.pressedBtn,
@@ -20,7 +21,7 @@ export const Button = ({ children, variant = 'solid', ...props }: ButtonProps) =
       ]}
     >
       <Text
-        variant={TextVariant.label_large}
+        variant={TextVariant.LABEL_LARGE}
         color={disabled ? '#727272' : variant === 'solid' ? colors.onPrimary : colors.primary}
       >
         {children}

@@ -3,27 +3,27 @@ import { TextStyle } from 'react-native';
 import { TextVariant } from './types';
 
 export const textStyles: Record<TextVariant, TextStyle | TextStyle[]> = {
-  [TextVariant.title_medium]: {
+  [TextVariant.TITLE_MEDIUM]: {
     fontSize: 24,
     fontWeight: '600',
   },
-  [TextVariant.title_small]: {
+  [TextVariant.TITLE_SMALL]: {
     fontSize: 20,
     fontWeight: '600',
   },
-  [TextVariant.body_large]: {
+  [TextVariant.BODY_LARGE]: {
     fontSize: 16,
     fontWeight: '400',
   },
-  [TextVariant.body_small]: {
+  [TextVariant.BODY_SMALL]: {
     fontSize: 12,
     fontWeight: '400',
   },
-  [TextVariant.label_large]: {
+  [TextVariant.LABEL_LARGE]: {
     fontSize: 16,
     fontWeight: '600',
   },
-  [TextVariant.label_small]: {
+  [TextVariant.LABEL_SMALL]: {
     fontSize: 12,
     fontWeight: '600',
   },

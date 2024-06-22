@@ -1,6 +1,5 @@
 export { BasicInformationStep } from './BasicInformationStep';
-export { ControlBtns } from './ControlBtns';
 export { DateStep } from './DateStep';
-export { Header } from './Header';
 export { SubtasksStep } from './SubtasksStep';
+export { TaskForm } from './TaskForm';
 export { TimerangeStep } from './TimerangeStep';

@@ -1,7 +1,7 @@
 import { useFormContext, useWatch } from 'react-hook-form';
 
-import { ListItem } from '@/components/TaskModal/ListItem';
 import { Input } from '@/components/UI';
+import { ListItem } from '@/forms/TaskForm/ListItem';
 
 import { FormContext } from '../types';
 import { styles } from './styles';
