@@ -1,0 +1,28 @@
+import { TimeFilter } from './timefilter';
+import { TodoTask } from './todo';
+
+export type RootStackParamList = {
+  Onboarding: undefined;
+  Drawer: undefined;
+  CategoryTasks: {
+    category: string;
+    timeFilter: TimeFilter;
+  };
+  AddCategoryModal: undefined;
+  TaskModal: {
+    category: string;
+    task?: TodoTask;
+    initialStep?: number;
+  };
+  ByTitleTasks: {
+    taskQuery: string;
+    timeFilter: TimeFilter;
+  };
+};
+
+export type DrawerParamList = {
+  Main: undefined;
+  DailyTasks: undefined;
+  ImportantTasks: undefined;
+  DoneTasks: undefined;
+};

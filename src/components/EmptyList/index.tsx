@@ -1,0 +1,15 @@
+import React from 'react';
+import { View } from 'react-native';
+
+import { commonStyles } from '@/commonStyles';
+
+import { Text } from '../UI';
+import { TextVariant } from '../UI/Text/types';
+
+export const EmptyList = ({ message }: { message: string }) => {
+  return (
+    <View style={commonStyles.fullSizeCentered} testID="EmptyList">
+      <Text variant={TextVariant.LABEL_LARGE}>{message}</Text>
+    </View>
+  );
+};
